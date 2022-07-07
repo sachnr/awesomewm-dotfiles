@@ -67,9 +67,9 @@ theme.monospace_bold = "Roboto Mono Nerd Fonts Bold 10"
 theme.icon_fonts =  "Material Icons Round 14"
 
 -- -- clickable container ----
-theme.mouse_enter = theme.bg0
-theme.mouse_leave = theme.bg0_h
-theme.mouse_press = theme.bg0 .. "80"
+theme.mouse_enter = theme.bg0_h
+theme.mouse_leave = theme.bg0
+theme.mouse_press = theme.bg0_h .. "80"
 theme.mouse_release = theme.bg0
 
 -- -------- accent -----------

@@ -64,8 +64,8 @@ NETWORK = {
 
 --OpenWeatherMap
 WEATHER = {
-    key = "sddadadsda",
-    city_id = "1234567",
+    key = "",
+    city_id = "",
     units = "metric"
 }
 
@@ -104,7 +104,7 @@ local run_on_start_up = {
 -- set icons in the theme file
 
 awful.layout.layouts = {
-    awful.layout.suit.tile,
+    awful.layout.suit.tile.right,
     awful.layout.suit.floating,
 }
 
@@ -114,6 +114,9 @@ awful.layout.layouts = {
 
 -- ----- Import theme --------
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/" .. colors .. "_pallete.lua")
+
+-- ----- bling modeule -------
+require("client.bling")
 
 --  Run all the apps listed in run_on_start_up
 for _, app in ipairs(run_on_start_up) do

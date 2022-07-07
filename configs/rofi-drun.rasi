@@ -18,14 +18,14 @@ configuration{
 
 
 * {
-    bg-col:  #2e3440;
-    bg-col-light: #2e3440;
-    border-col: #1E2129;
-    selected-col: #2e3440;
-    blue: #5e81ac;
-    fg-col: #eceff4;
-    fg-col2: #e5e9f0;
-    grey: #4c566a;
+    bg-col:  #1D2021;
+    bg-col-light: #282828;
+    border-col: #3C3836;
+    selected-col: #3C3836;
+    blue: #83A598;
+    fg-col: #FBF1C7;
+    fg-col2: #EBDBB2;
+    grey: #928374;
     width: 600;
 }
 

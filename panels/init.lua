@@ -16,7 +16,6 @@ awful.screen.connect_for_each_screen(
     -- Create the Top bar
     s.top_panel = top_panel.create(s)
     s.dashboard = dashboard.create(s)
-    s.padding = 0
   end
 )
 

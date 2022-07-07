@@ -19,6 +19,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 local dpi = require("beautiful").xresources.apply_dpi
+local get_dpi = require("beautiful").xresources.get_dpi
 
 --widgets
 local TaskList = require("panels.top-panel.task-list")
@@ -55,6 +56,12 @@ textclock:connect_signal(
 local cw = wibox.container.margin(textclock, dpi(12), dpi(12), dpi(8), dpi(8))
 
 -- ------ Plus Button --------
+--Rofi Launcher
+local rofi_command =
+  "env /usr/bin/rofi -dpi " ..
+  get_dpi() ..
+    " -width " ..
+      dpi(400) .. " -show drun -theme " .. gears.filesystem.get_configuration_dir() .. "/configs/rofi.rasi"
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(24)))
 add_button:buttons(
     gears.table.join(
@@ -64,11 +71,12 @@ add_button:buttons(
             nil,
             function()
                 awful.spawn(
-                    awful.screen.focused().selected_tag.defaultApp,
-                    {
-                        tag = _G.mouse.screen.selected_tag,
-                        placement = awful.placement.bottom_right
-                    }
+                    rofi_command
+                    -- awful.screen.focused().selected_tag.defaultApp,
+                    -- {
+                    --     tag = _G.mouse.screen.selected_tag,
+                    --     placement = awful.placement.bottom_right
+                    -- }
                 )
             end
         )
@@ -155,7 +163,7 @@ top_panel.create = function(s)
             wibox.container.margin(TaskList(s), dpi(2), dpi(2), dpi(3), dpi(3)),
             add_button
         },
-        wibox.container.margin(TagList(s), dpi(3), dpi(3), dpi(3), dpi(3)),
+        TagList(s),
         {
             layout = wibox.layout.fixed.horizontal,
             weather_icon,

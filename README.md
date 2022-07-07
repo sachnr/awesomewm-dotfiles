@@ -1,6 +1,8 @@
 # Dotfiles
 personal repo for syncing data on new linux installations
 
+<a href="url"><img src="https://i.imgur.com/8pl9sEh.png" width="720" ></a>
+
 ## Archlinux
 
 ### install yay

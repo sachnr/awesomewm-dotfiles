@@ -4,7 +4,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local helpers = require("client.helpers")
-local icons = require("icons.flaticons")
 
 -- =========================================================
 -- ============= Function for making buttons ===============
@@ -178,7 +177,7 @@ local function close(c)
 		button_size,
 		button_margin,
 		"close",
-		icons.close
+		beautiful.close_icon
 	)
 end
 
@@ -192,7 +191,7 @@ local function minimize(c)
 		button_size_alt,
 		button_margin,
 		"minimize",
-		icons.minus
+		beautiful.minimize_icon
 	)
 end
 
@@ -206,7 +205,7 @@ local function maximize(c)
 		button_size_alt,
 		button_margin,
 		"maximize",
-		icons.maximize
+		beautiful.maximize_icon
 	)
 end
 
@@ -299,7 +298,7 @@ client.connect_signal(
 					left = dpi(10),
 					widget = wibox.container.margin
 				},
-				bg = beautiful.titlebar_color,
+				bg = beautiful.titlebar_color .. "c0",
 				widget = wibox.container.background
 			}
 		)

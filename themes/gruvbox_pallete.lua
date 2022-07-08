@@ -14,6 +14,8 @@ local dpi = xresources.apply_dpi
 local helpers = require("client.helpers")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
+local icons = require("icons.flaticons")
+local awful = require("awful")
 
 -- define module table
 local theme = {}
@@ -45,9 +47,32 @@ theme.blue = "#83A598"
 -- =================== THEME VARIABLES =====================
 -- =========================================================
 
+-- =========================================================
+--  Script to change svg color (run this when changing theme)
+-- =========================================================
+
+awful.spawn.easy_async_with_shell(
+    [[
+        STR=$HOME"/.config/awesome/icons/places/*"
+        STR2=$HOME"/.config/awesome/icons/flaticons/*"
+        
+        for x in $STR
+        do
+        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+        mv temp $x
+        done
+
+        for x in $STR2
+        do
+        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+        mv temp $x
+        done
+    ]]
+)
+
 -- ------- Wallpaper ---------
 theme.music = gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
-theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/gruvbox/gruvbox0.png"
+theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/gruvbox/gruvbox1.png"
 
 -- ---- profile picture ------
 theme.pfp = gears.filesystem.get_configuration_dir() .. "icons/user/profile.jpg"
@@ -56,7 +81,7 @@ theme.pfp = gears.filesystem.get_configuration_dir() .. "icons/user/profile.jpg"
 theme.wibar_height = dpi(36)
 
 -- --------- gaps ------------
-theme.useless_gap = dpi(8)
+theme.useless_gap = dpi(4)
 theme.gap_single_client = true
 
 -- --------- Fonts -----------
@@ -64,7 +89,7 @@ theme.title_fonts = "Roboto Mono Nerd Fonts Bold 11"
 theme.normal_fonts = "Roboto 11"
 theme.monospace = "Roboto Mono Nerd Fonts 10"
 theme.monospace_bold = "Roboto Mono Nerd Fonts Bold 10"
-theme.icon_fonts =  "Material Icons Round 14"
+theme.icon_fonts = "Material Icons Round 14"
 
 -- -- clickable container ----
 theme.mouse_enter = theme.bg0_h
@@ -79,10 +104,10 @@ theme.accent_normal = theme.bg1
 theme.accent_normal_c = theme.red
 theme.accent_mouse_enter = theme.red .. "a0"
 theme.accent_mouse_press = theme.red .. "80"
-theme.accent_normal_alt = theme.green 
+theme.accent_normal_alt = theme.green
 theme.accent_mouse_enter_alt = theme.green .. "a0"
-theme.accent_mouse_press_alt = theme.green 
-theme.accent_normal_alt_alt = theme.yellow 
+theme.accent_mouse_press_alt = theme.green
+theme.accent_normal_alt_alt = theme.yellow
 theme.accent_mouse_enter_alt_alt = theme.yellow .. "a0"
 theme.accent_mouse_press_alt_alt = theme.yellow .. "80"
 
@@ -104,6 +129,12 @@ theme.titlebar_color = theme.bg0_h
 theme.border_width = dpi(2)
 theme.border_accent = theme.bg1
 -- theme.corner_radius = dpi(8)
+theme.close_icon = ""
+ --icons.close
+theme.maximize_icon = ""
+ --icons.maximize
+theme.minimize_icon = ""
+ --icons.minus
 
 -- -------- widgets ----------
 theme.widget_box_radius = dpi(12)
@@ -120,7 +151,7 @@ theme.dashboard_max_height = dpi(480)
 theme.dashboard_max_width = dpi(600)
 theme.dashboard_min_width = dpi(600)
 theme.dashboard_margin = dpi(2)
-theme.dashboard_margin_color= theme.bg1
+theme.dashboard_margin_color = theme.bg1
 
 -- ------ System Tray --------
 theme.systray_icon_spacing = dpi(8)
@@ -139,8 +170,8 @@ theme.menu_bg_normal = theme.bg2
 
 -- ------- TaskList ----------
 theme.tasklist_font = "Roboto Mono Nerd Fonts Bold 9"
-theme.tasklist_bg_normal =  theme.bg0_s
-theme.tasklist_bg_focus = theme.bg0_s .. "4f"
+theme.tasklist_bg_normal = theme.bg0_s .. "4f"
+theme.tasklist_bg_focus = theme.bg0_s
 theme.tasklist_bg_urgent = theme.red
 theme.tasklist_fg_focus = theme.fg0
 theme.tasklist_fg_urgent = theme.fg0
@@ -155,23 +186,23 @@ theme.taglist_bg_occupied = theme.bg0_h
 theme.taglist_bg_urgent = theme.bg0_h
 theme.taglist_bg_focus = theme.bg0_h
 theme.taglist_font = theme.title_fonts
-theme.taglist_spacing     = dpi(6)
-theme.taglist_fg_focus    = theme.yellow
+theme.taglist_spacing = dpi(6)
+theme.taglist_fg_focus = theme.yellow
 theme.taglist_fg_occupied = theme.fg1
-theme.taglist_fg_urgent   = theme.red
-theme.taglist_fg_empty    = theme.bg3
+theme.taglist_fg_urgent = theme.red
+theme.taglist_fg_empty = theme.bg3
 
 -- --- tag preview bling -----
-theme.tag_preview_widget_border_radius = theme.border_width        -- Border radius of the widget (With AA)
-theme.tag_preview_client_border_radius = theme.border_width / 2       -- Border radius of each client in the widget (With AA)
-theme.tag_preview_client_opacity = 1           -- Opacity of each client
-theme.tag_preview_client_bg = theme.bg0_h           -- The bg color of each client
+theme.tag_preview_widget_border_radius = dpi(0) -- Border radius of the widget (With AA)
+theme.tag_preview_client_border_radius = theme.border_width / 2 -- Border radius of each client in the widget (With AA)
+theme.tag_preview_client_opacity = 1 -- Opacity of each client
+theme.tag_preview_client_bg = theme.bg0_h -- The bg color of each client
 theme.tag_preview_client_border_color = theme.bg1 -- The border color of each client
-theme.tag_preview_client_border_width = dpi(1)         -- The border width of each client
-theme.tag_preview_widget_bg = theme.bg1          -- The bg color of the widget
+theme.tag_preview_client_border_width = dpi(1) -- The border width of each client
+theme.tag_preview_widget_bg = theme.bg1 -- The bg color of the widget
 theme.tag_preview_widget_border_color = theme.bg1 -- The border color of the widget
-theme.tag_preview_widget_border_width = dpi(1)         -- The border width of the widget
-theme.tag_preview_widget_margin = dpi(1)               -- The margin of the widget
+theme.tag_preview_widget_border_width = dpi(0) -- The border width of the widget
+theme.tag_preview_widget_margin = dpi(0) -- The margin of the widget
 
 -- ------- Snapping ----------
 theme.snap_bg = theme.bg1
@@ -182,30 +213,37 @@ theme.toggle_button_inactive = theme.bg2
 theme.toggle_button_active = theme.blue
 
 -- --------- music -----------
-theme.playerctl_ignore  = "firefox"
-theme.playerctl_player  = {"ncmpcpp", "vlc", "%any"}
+theme.playerctl_ignore = "firefox"
+theme.playerctl_player = {"mpv", "vlc", "%any"}
 
 -- ------- date/time ---------
 theme.date_time_color = theme.yellow
 
 -- ----- Hotkey popup --------
-theme.hotkeys_shape             = helpers.rrect(dpi(6))
-theme.hotkeys_border_width      = 0
-theme.hotkeys_font              = "JetBrainsMono Nerd Font 11"
-theme.hotkeys_group_margin 	    = 30
-theme.hotkeys_label_bg          = theme.bg0_h
-theme.hotkeys_label_fg          = theme.fg1
-theme.hotkeys_description_font  = "JetBrains Mono Nerd Font 8"
-theme.hotkeys_modifiers_fg      = theme.fg1
-theme.hotkeys_bg                = theme.bg0_h
+theme.hotkeys_shape = helpers.rrect(dpi(12))
+theme.hotkeys_border_width = dpi(1)
+theme.hotkeys_font = "JetBrainsMono Nerd Font 11"
+theme.hotkeys_group_margin = dpi(60)
+theme.hotkeys_label_bg = theme.bg0_h
+theme.hotkeys_label_fg = theme.bg0
+theme.hotkeys_description_font = "JetBrains Mono Nerd Font 8"
+theme.hotkeys_modifiers_fg = theme.fg1
+theme.hotkeys_bg = theme.bg0_h
+
+-- --- flash focus bling -----
+theme.flash_focus_start_opacity = 0.7 -- the starting opacity
+theme.flash_focus_step = 0.01 -- the step of animation
 
 -- --------- Icons -----------
 theme.icon_color = theme.fg1
 -- layout icons
-theme.layout_tile = gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "icons/layout/tile.svg", theme.icon_color)
-theme.layout_floating = gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "icons/layout/float.svg", theme.icon_color)
-theme.layout_centered = gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "icons/layout/bling.svg", theme.icon_color)
-
+theme.layout_tile =
+    gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "icons/layout/tile.svg", theme.icon_color)
+theme.layout_floating =
+    gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "icons/layout/float.svg", theme.icon_color)
+local themes_path = "/usr/share/awesome/themes/"
+theme.layout_max = gears.color.recolor_image(themes_path .. "default/layouts/fullscreenw.png", theme.icon_color)
+theme.layout_dwindle = gears.color.recolor_image(themes_path .. "default/layouts/dwindlew.png", theme.icon_color)
 -- --------- extra -----------
 -- theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
 -- theme.layout_dwindle    = themes_path.."default/layouts/dwindlew.png"
@@ -220,7 +258,6 @@ theme.layout_centered = gears.color.recolor_image(gears.filesystem.get_configura
 -- theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
 
 theme.icon_theme = "Papirus Dark"
-
 
 -- return theme
 return theme

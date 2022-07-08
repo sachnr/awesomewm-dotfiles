@@ -32,12 +32,19 @@ function rules.create(clientkeys, clientbuttons)
             id = "global",
             rule = {},
             properties = {
-                switchtotag = true,
                 titlebars_enabled = beautiful.titlebars_enabled,
                 border_width = beautiful.border_width,
                 border_color = beautiful.border_accent,
                 focus = awful.client.focus.filter,
                 raise = true,
+                floating = false,
+				maximized = false,
+				above = false,
+				below = false,
+				ontop = false,
+				sticky = false,
+				maximized_horizontal = false,
+				maximized_vertical = false,
                 keys = clientkeys,
                 buttons = clientbuttons,
                 screen = awful.screen.preferred,
@@ -147,7 +154,7 @@ function rules.create(clientkeys, clientbuttons)
                 class = {
                     "Nautilus",
                     "code-oss",
-                    "gedit",
+                    "Gedit",
                     "Eog"
                 },
                 name = {}
@@ -171,8 +178,6 @@ function rules.create(clientkeys, clientbuttons)
             },
             properties = {
                 screen = awful.screen.preferred,
-                keys = clientkeys,
-                buttons = clientbuttons
             }
         },
         -- =========================================================

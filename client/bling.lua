@@ -10,6 +10,7 @@ bling.module.wallpaper.setup {
   set_function = bling.module.wallpaper.setters.random,
   screen = screen, -- The awesome 'screen' variable is an array of all screen objects
   wallpaper = {beautiful.wallpaper},
+  position = "fit",
   change_timer = 631
 }
 
@@ -39,3 +40,8 @@ bling.widget.tag_preview.enable {
     widget = wibox.widget.imagebox
   }
 }
+
+-- ------ flash focus --------
+
+-- bling.module.flash_focus.enable()
+

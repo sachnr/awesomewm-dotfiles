@@ -139,6 +139,7 @@ top_panel.create = function(s)
         {
             ontop = true,
             screen = s,
+            type = 'dock',
             height = beautiful.wibar_height,
             width = s.geometry.width,
             x = s.geometry.x,

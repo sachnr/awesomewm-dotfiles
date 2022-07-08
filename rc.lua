@@ -104,8 +104,10 @@ local run_on_start_up = {
 -- set icons in the theme file
 
 awful.layout.layouts = {
-    awful.layout.suit.tile.right,
+    awful.layout.suit.tile,
     awful.layout.suit.floating,
+    awful.layout.suit.max,
+    awful.layout.suit.spiral.dwindle,
 }
 
 -- =========================================================
@@ -138,9 +140,8 @@ require("panels")
 --- ------ Import Tags --------
 require("panels.tags")
 
--- comment this if you dont want titlebars
+-- Titlebars on clients
 require("client.titlebar")
--- require("client.round-corners")
 
 -- - Import notifications ----
 require("client.notification")
@@ -148,7 +149,7 @@ require("client.notification")
 -- Import Keybinds
 local keys = require("client.keys")
 root.keys(keys.globalkeys)
-root.buttons(keys.desktopbuttons)
+root.buttons(keys.globalbuttons)
 
 -- Import rules
 local create_rules = require("client.rules").create

@@ -52,7 +52,7 @@ local function widget()
 		{
 			{
 				font = beautiful.icon_fonts,
-				markup = helpers.colorize_text("", beautiful.bg_normal),
+				markup = helpers.colorize_text("", beautiful.blue or beautiful.bg_normal),
 				align = "center",
 				valign = "center",
 				widget = wibox.widget.textbox

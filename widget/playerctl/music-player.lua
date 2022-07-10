@@ -183,10 +183,10 @@ local music =
 				},
 				layout = wibox.layout.stack
 			},
-			bg = beautiful.widget_bg_normal,
+			bg = beautiful.transparent,
 			shape = helpers.rrect(beautiful.widget_box_radius),
 			forced_width = dpi(270),
-			forced_height = dpi(200),
+			forced_height = dpi(160),
 			widget = wibox.container.background
 		},
 		margins = dpi(10),
@@ -225,7 +225,7 @@ playerctl:connect_signal(
 		end
 		music_art:set_image(gears.surface.load_uncached(album_path))
 		music_title:set_markup_silently(helpers.colorize_text(title, beautiful.fg_normal))
-		music_artist:set_markup_silently(helpers.colorize_text(artist, beautiful.accent_normal))
+		music_artist:set_markup_silently(helpers.colorize_text(artist, beautiful.blue or beautiful.accent_normal))
 	end
 )
 

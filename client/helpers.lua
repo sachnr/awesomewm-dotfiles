@@ -35,7 +35,7 @@ helpers.ccontainer = function(widget)
     container:connect_signal(
         "mouse::leave",
         function()
-            container.bg = beautiful.mouse_leave
+            container.bg = beautiful.transparent
             if old_wibox then
                 old_wibox.cursor = old_cursor
                 old_wibox = nil

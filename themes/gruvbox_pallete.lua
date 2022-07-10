@@ -82,7 +82,7 @@ theme.wibar_height = dpi(36)
 
 -- --------- gaps ------------
 theme.useless_gap = dpi(4)
-theme.gap_single_client = true
+theme.gap_single_client = false
 
 -- --------- Fonts -----------
 theme.title_fonts = "Roboto Mono Nerd Fonts Bold 11"
@@ -92,10 +92,10 @@ theme.monospace_bold = "Roboto Mono Nerd Fonts Bold 10"
 theme.icon_fonts = "Material Icons Round 14"
 
 -- -- clickable container ----
-theme.mouse_enter = theme.bg0_h
-theme.mouse_leave = theme.bg0
-theme.mouse_press = theme.bg0_h .. "80"
-theme.mouse_release = theme.bg0
+theme.mouse_enter = theme.bg1
+theme.mouse_leave = theme.transparent
+theme.mouse_press = theme.bg1
+theme.mouse_release = theme.bg2
 
 -- -------- accent -----------
 theme.accent_normal = theme.bg1
@@ -146,8 +146,8 @@ theme.widget_bg_normal = theme.bg0
 theme.layoutbox_width = dpi(24)
 
 -- ------- dashboard ---------
-theme.dashboard_min_height = dpi(480)
-theme.dashboard_max_height = dpi(480)
+theme.dashboard_min_height = dpi(600)
+theme.dashboard_max_height = dpi(600)
 theme.dashboard_max_width = dpi(600)
 theme.dashboard_min_width = dpi(600)
 theme.dashboard_margin = dpi(2)
@@ -209,7 +209,7 @@ theme.snap_bg = theme.bg1
 theme.snap_border_width = dpi(1)
 
 -- ---- Toggle buttons -------
-theme.toggle_button_inactive = theme.bg2
+theme.toggle_button_inactive = theme.bg1
 theme.toggle_button_active = theme.blue
 
 -- --------- music -----------
@@ -218,6 +218,13 @@ theme.playerctl_player = {"mpv", "vlc", "%any"}
 
 -- ------- date/time ---------
 theme.date_time_color = theme.yellow
+
+-- ------- calender ----------
+theme.cal_header_bg = theme.transparent
+theme.cal_week_bg = theme.transparent
+theme.cal_header_fg = theme.blue
+theme.cal_focus_fg = theme.fg0
+theme.cal_week_fg = theme.fg1
 
 -- ----- Hotkey popup --------
 theme.hotkeys_shape = helpers.rrect(dpi(12))

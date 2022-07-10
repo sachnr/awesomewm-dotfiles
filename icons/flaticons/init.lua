@@ -1,4 +1,6 @@
 local dir = os.getenv("HOME") .. "/.config/awesome/icons/flaticons"
+local beautiful = require("beautiful")
+local gears = require("gears")
 
 return {
   --tags
@@ -66,4 +68,3 @@ return {
   right = dir .. '/right.svg',
   reading = dir .. '/reading.svg',
 }
-

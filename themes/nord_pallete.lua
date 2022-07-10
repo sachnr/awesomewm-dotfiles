@@ -223,6 +223,13 @@ theme.playerctl_player = {"mpv", "vlc", "%any"}
 -- ------- date/time ---------
 theme.date_time_color = theme.nord10
 
+-- ------- calender ----------
+theme.cal_header_bg = theme.transparent
+theme.cal_week_bg = theme.transparent
+theme.cal_header_fg = theme.accent_normal
+theme.cal_focus_fg = theme.fg_normal
+theme.cal_week_fg = theme.fg_normal
+
 -- ----- Hotkey popup --------
 theme.hotkeys_shape = helpers.rrect(dpi(12))
 theme.hotkeys_border_width = dpi(1)

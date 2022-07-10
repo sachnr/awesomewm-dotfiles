@@ -104,6 +104,7 @@ local places_widget =
 }
 
 --importing stuff
+local calender = require("panels.dashboard.calender")
 local playerctl = require("widget.playerctl.music-player")
 local audio = require("panels.dashboard.set-audio-sink")
 local wifi = require ("panels.dashboard.wifi")
@@ -162,13 +163,14 @@ local toggle_buttons =
     widget = wibox.container.margin,
     layout = wibox.layout.fixed.vertical
 }
+
 -- placing them in boxes
 local apps_box = helpers.create_boxed_widget(apps_widget, dpi(270), dpi(40), beautiful.widget_bg_normal)
 local places_widget_box = helpers.create_boxed_widget(places_widget, dpi(270), dpi(120), beautiful.widget_bg_normal)
 local volume_box = helpers.create_boxed_widget(settings_widget, dpi(270), dpi(100), beautiful.widget_bg_normal)
 local user_system_monitor = helpers.create_boxed_widget(sysmon, dpi(270), dpi(120), beautiful.widget_bg_normal)
 local toggle_apps = helpers.create_boxed_widget(toggle_buttons, dpi(270), dpi(120), beautiful.widget_bg_normal)
-
+local calender_box = helpers.create_boxed_widget(calender, dpi(270), dpi(400), beautiful.widget_bg_normal)
 -- =========================================================
 -- ======================== PANEL ==========================
 -- =========================================================
@@ -205,7 +207,7 @@ dashboard.create = function(s)
                                 {
                                     user_profile,
                                     user_system_monitor,
-                                    places_widget_box,
+                                    calender_box,
                                     -- apps_box,
                                     spacing = dpi(15),
                                     layout = wibox.layout.fixed.vertical
@@ -219,6 +221,7 @@ dashboard.create = function(s)
                                     volume_box,
                                     toggle_apps,
                                     playerctl,
+                                    places_widget_box,
                                     spacing = dpi(15),
                                     layout = wibox.layout.fixed.vertical
                                 },

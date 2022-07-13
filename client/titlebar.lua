@@ -9,7 +9,7 @@ local helpers = require("client.helpers")
 -- ============= Function for making buttons ===============
 -- =========================================================
 
-local decorations = function(c, shape, color, unfocused_color, hover_color, size, margin, cmd, icon)
+local decorations = function(c, shape, color, unfocused_color, hover_color, size, margin, cmd, icon, tooltip_text)
 	local button =
 		wibox.widget(
 		{
@@ -100,6 +100,8 @@ local decorations = function(c, shape, color, unfocused_color, hover_color, size
 	)
 
 	local p = button_commands[cmd].track_property
+	local tooltip =awful.tooltip { }
+	tooltip:add_to_object(button_widget)
 	--- Track client property if needed
 	if p then
 		c:connect_signal(
@@ -146,6 +148,7 @@ local decorations = function(c, shape, color, unfocused_color, hover_color, size
 		"mouse::enter",
 		function()
 			button.bg = hover_color
+			tooltip.text = tooltip_text
 		end
 	)
 	c:connect_signal(
@@ -172,12 +175,13 @@ local function close(c)
 		c,
 		button_shape,
 		beautiful.accent_normal_c,
-		beautiful.accent_mouse_enter,
-		beautiful.accent_mouse_press,
+		beautiful.accent_normal_c .. "a0",
+		beautiful.accent_normal_c .. "80",
 		button_size,
 		button_margin,
 		"close",
-		beautiful.close_icon
+		beautiful.close_icon,
+		"close"
 	)
 end
 
@@ -185,13 +189,14 @@ local function minimize(c)
 	return decorations(
 		c,
 		button_shape,
-		beautiful.accent_normal_alt,
-		beautiful.accent_mouse_enter_alt,
-		beautiful.accent_mouse_press_alt,
+		beautiful.accent_normal_min,
+		beautiful.accent_normal_min .. "a0",
+		beautiful.accent_normal_min .. "80",
 		button_size_alt,
 		button_margin,
 		"minimize",
-		beautiful.minimize_icon
+		beautiful.minimize_icon,
+		"minimize"
 	)
 end
 
@@ -199,13 +204,29 @@ local function maximize(c)
 	return decorations(
 		c,
 		button_shape,
-		beautiful.accent_normal_alt_alt,
-		beautiful.accent_mouse_enter_alt_alt,
-		beautiful.accent_mouse_press_alt_alt,
+		beautiful.accent_normal_max,
+		beautiful.accent_normal_max .. "a0",
+		beautiful.accent_normal_max .. "80",
 		button_size_alt,
 		button_margin,
 		"maximize",
-		beautiful.maximize_icon
+		beautiful.maximize_icon,
+		"maximize"
+	)
+end
+
+local function floating(c)
+	return decorations(
+		c,
+		button_shape,
+		beautiful.accent_normal_float,
+		beautiful.accent_normal_float .. "a0",
+		beautiful.accent_normal_float .. "80",
+		button_size_alt,
+		button_margin,
+		"floating",
+		beautiful.float_icon,
+		"floating"
 	)
 end
 
@@ -288,6 +309,8 @@ client.connect_signal(
 					},
 					--- Right
 					{
+						floating(c),
+						helpers.horizontal_pad(dpi(10)),
 						minimize(c),
 						maximize(c),
 						close(c),

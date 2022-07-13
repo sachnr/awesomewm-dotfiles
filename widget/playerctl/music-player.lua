@@ -1,4 +1,4 @@
-local bling = require("bling")
+local bling = require("submodules.bling")
 local awful = require("awful")
 local gears = require("gears")
 local naughty = require("naughty")

@@ -2,7 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gfs = require("gears.filesystem")
 local beautiful = require("beautiful")
-local bling = require("bling")
+local bling = require("submodules.bling")
 
 -- ------- wallapper ---------
 

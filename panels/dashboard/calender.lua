@@ -16,13 +16,13 @@ styles.month = {
 
 styles.normal = {
     fg_color = beautiful.fg_normal,
-    bg_color = beautiful.transparent,
+    bg_color = beautiful.widget_bg_normal,
     shape = helpers.rrect(dpi(4))
 }
 
 styles.focus = {
     fg_color = beautiful.cal_focus_fg,
-    bg_color = beautiful.accent_normal,
+    bg_color = beautiful.cal_focus_bg,
     markup = function(t)
         return "<b>" .. t .. "</b>"
     end,
@@ -63,7 +63,7 @@ local decorate_cell = function(widget, flag, date)
         day = (date.day or 1)
     }
     local weekday = tonumber(os.date("%w", os.time(d)))
-    local default_bg = (weekday == 0 or weekday == 6) and "#232323" or "#383838"
+    local default_bg = beautiful.widget_bg_normal
     local ret = wibox.widget {
         {
             {

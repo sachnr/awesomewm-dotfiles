@@ -1,5 +1,5 @@
 # Dotfiles
-personal repo for syncing data on new linux installations
+Awesome wm dotfiles
 
 <a href="url"><img src="https://i.imgur.com/8pl9sEh.png" width="720" ></a>
 
@@ -29,7 +29,7 @@ $ ninja -C build install
 ```bash
 $ yay -S i3lock-fancy ttf-roboto caffeine-ng lxappearance-gtk3 nerd-fonts-roboto-mono material-icons-git 
 $ pacman -S acpi acpid acpi_call alacritty bluez-utils bluez blueman brightnessctl flameshot ffmpeg 
-$ pacman -S gnome-system-monitor xfce4-power-manager nautilus polkit-gnome rofi upower
+$ pacman -S gnome-system-monitor xfce4-power-manager nemo polkit-gnome rofi upower
 $ pacman -S nm-connection-editor papirus-icon-theme networkmanager network-manager-applet
 $ pacman -S mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl
 ```
@@ -48,11 +48,6 @@ $ sudo systemctl enable --now NetworkManager
 $ git clone --recurse-submodules https://github.com/sachnr/dotfiles.git ~/.config/awesome
 $ cd ~/.config/awesome
 $ git submodule update --remote --merge
-```
-### extra packages(optional)
-```bash
-$ pacman -S vscode gpick pavucontrol ufw 
-$ yay -S code-marketplace ttf-google-sans nautilus-open-any-terminal
 ```
 
 

@@ -378,6 +378,17 @@ keys.globalkeys =
         end,
         {description = "volume down", group = "hotkeys"}
     ),
+    -- ALSA volume control
+    awful.key(
+        {},
+        "XF86AudioRaiseVolume",
+        function()
+            awful.spawn("amixer -D pulse sset Master 5%+", false)
+            awesome.emit_signal("widget::volume")
+            awesome.emit_signal("module::volume_osd:show", true)
+        end,
+        {description = "volume up", group = "hotkeys"}
+    ),
     awful.key(
         {},
         "XF86AudioMute",

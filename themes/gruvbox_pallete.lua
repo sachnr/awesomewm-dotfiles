@@ -51,28 +51,27 @@ theme.blue = "#83A598"
 --  Script to change svg color (run this when changing theme)
 -- =========================================================
 
-awful.spawn.easy_async_with_shell(
-    [[
-        STR=$HOME"/.config/awesome/icons/places/*"
-        STR2=$HOME"/.config/awesome/icons/flaticons/*"
+-- awful.spawn.easy_async_with_shell(
+--     [[
+--         STR=$HOME"/.config/awesome/icons/places/*"
+--         STR2=$HOME"/.config/awesome/icons/flaticons/*"
         
-        for x in $STR
-        do
-        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
-        mv temp $x
-        done
+--         for x in $STR
+--         do
+--         sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+--         mv temp $x
+--         done
 
-        for x in $STR2
-        do
-        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
-        mv temp $x
-        done
-    ]]
-)
+--         for x in $STR2
+--         do
+--         sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+--         mv temp $x
+--         done
+--     ]]
+-- )
 
 -- ------- Wallpaper ---------
-theme.music = gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
-theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/gruvbox/gruvbox1.png"
+theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/gruvbox/gruvbox01.png"
 
 -- ---- profile picture ------
 theme.pfp = gears.filesystem.get_configuration_dir() .. "icons/user/profile.jpg"
@@ -102,14 +101,13 @@ theme.accent_normal = theme.bg1
 
 -- -------- accent titlebar-----------
 theme.accent_normal_c = theme.red
-theme.accent_mouse_enter = theme.red .. "a0"
-theme.accent_mouse_press = theme.red .. "80"
-theme.accent_normal_alt = theme.green
-theme.accent_mouse_enter_alt = theme.green .. "a0"
-theme.accent_mouse_press_alt = theme.green
-theme.accent_normal_alt_alt = theme.yellow
-theme.accent_mouse_enter_alt_alt = theme.yellow .. "a0"
-theme.accent_mouse_press_alt_alt = theme.yellow .. "80"
+theme.accent_normal_max = theme.green
+theme.accent_normal_min = theme.yellow
+theme.accent_normal_float = theme.blue
+theme.close_icon = ""
+theme.maximize_icon = ""
+theme.minimize_icon = ""
+theme.float_icon = ""
 
 -- ------ foreground ---------
 theme.fg_normal = theme.fg1
@@ -129,12 +127,6 @@ theme.titlebar_color = theme.bg0_h
 theme.border_width = dpi(2)
 theme.border_accent = theme.bg1
 -- theme.corner_radius = dpi(8)
-theme.close_icon = ""
- --icons.close
-theme.maximize_icon = ""
- --icons.maximize
-theme.minimize_icon = ""
- --icons.minus
 
 -- -------- widgets ----------
 theme.widget_box_radius = dpi(12)
@@ -155,7 +147,7 @@ theme.dashboard_margin_color = theme.bg1
 
 -- ------ System Tray --------
 theme.systray_icon_spacing = dpi(8)
-theme.bg_systray = theme.bg0_h
+theme.bg_systray = theme.bg_normal
 
 -- --------- Menu ------------
 theme.menu_font = "Roboto 9"
@@ -213,8 +205,11 @@ theme.toggle_button_inactive = theme.bg1
 theme.toggle_button_active = theme.blue
 
 -- --------- music -----------
+theme.music = gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
+theme.playerctl_update_on_activity = true
+theme.playerctl_backend = "playerctl_cli"
 theme.playerctl_ignore = "firefox"
-theme.playerctl_player = {"mpv", "vlc", "%any"}
+theme.playerctl_player = {"music", "vlc", "%any"}
 
 -- ------- date/time ---------
 theme.date_time_color = theme.yellow
@@ -222,8 +217,9 @@ theme.date_time_color = theme.yellow
 -- ------- calender ----------
 theme.cal_header_bg = theme.transparent
 theme.cal_week_bg = theme.transparent
+theme.cal_focus_bg = theme.accent_normal
 theme.cal_header_fg = theme.blue
-theme.cal_focus_fg = theme.fg0
+theme.cal_focus_fg = theme.blue
 theme.cal_week_fg = theme.fg1
 
 -- ----- Hotkey popup --------

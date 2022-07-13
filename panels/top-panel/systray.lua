@@ -42,6 +42,7 @@ local update_widget = function()
 end
     
 local toggle = function()
+    systray:set_screen (awful.screen.focused())
     systray.visible = not systray.visible
     update_widget()
 end

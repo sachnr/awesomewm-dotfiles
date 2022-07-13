@@ -50,27 +50,26 @@ theme.nord15 = "#b48ead"
 --  Script to change svg color (run this when changing theme)
 -- =========================================================
 
-awful.spawn.easy_async_with_shell(
-    [[
-        STR=$HOME"/.config/awesome/icons/places/*"
-        STR2=$HOME"/.config/awesome/icons/flaticons/*"
+-- awful.spawn.easy_async_with_shell(
+--     [[
+--         STR=$HOME"/.config/awesome/icons/places/*"
+--         STR2=$HOME"/.config/awesome/icons/flaticons/*"
         
-        for x in $STR
-        do
-        sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
-        mv temp $x
-        done
+--         for x in $STR
+--         do
+--         sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
+--         mv temp $x
+--         done
 
-        for x in $STR2
-        do
-        sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
-        mv temp $x
-        done
-    ]]
-)
+--         for x in $STR2
+--         do
+--         sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
+--         mv temp $x
+--         done
+--     ]]
+-- )
 
 -- ------- Wallpaper ---------
-theme.music = gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
 theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/Nord-underwater.png"
 
 -- ---- profile picture ------
@@ -101,14 +100,13 @@ theme.accent_normal = theme.nord9
 
 -- -------- accent titlebar -----------
 theme.accent_normal_c = theme.nord9
-theme.accent_mouse_enter = theme.nord10
-theme.accent_mouse_press = theme.nord8
-theme.accent_normal_alt = theme.nord3 .. "80"
-theme.accent_mouse_enter_alt = theme.nord3
-theme.accent_mouse_press_alt = theme.nord3 .. "60"
-theme.accent_normal_alt_alt = theme.nord3 .. "80"
-theme.accent_mouse_enter_alt_alt = theme.nord3
-theme.accent_mouse_press_alt_alt = theme.nord3 .. "60"
+theme.accent_normal_max = theme.nord3
+theme.accent_normal_min = theme.nord3
+theme.accent_normal_float = theme.nord3
+theme.close_icon = icons.close
+theme.maximize_icon = icons.maximize
+theme.minimize_icon = icons.minus
+theme.float_icon = icons.plus
 
 -- ------ foreground ---------
 theme.fg_normal = theme.nord6
@@ -128,9 +126,6 @@ theme.titlebar_color = theme.nord0
 theme.border_width = dpi(1)
 theme.border_accent = theme.nord10
 -- theme.corner_radius = dpi(8)
-theme.close_icon = icons.close
-theme.maximize_icon = icons.maximize
-theme.minimize_icon = icons.minus
 
 -- -------- widgets ----------
 theme.widget_box_radius = dpi(12)
@@ -142,8 +137,8 @@ theme.widget_bg_normal = theme.nord0
 theme.layoutbox_width = dpi(24)
 
 -- ------- dashboard ---------
-theme.dashboard_min_height = dpi(480)
-theme.dashboard_max_height = dpi(480)
+theme.dashboard_min_height = dpi(600)
+theme.dashboard_max_height = dpi(600)
 theme.dashboard_max_width = dpi(600)
 theme.dashboard_min_width = dpi(600)
 theme.dashboard_margin = dpi(2)
@@ -177,24 +172,16 @@ theme.tasklist_plain_task_name = true
 theme.tasklist_shape = helpers.rect(dpi(4))
 
 -- -------- Taglist ----------
-theme.taglist_shape_border_width = dpi(2)
-theme.taglist_shape_border_width_empty = dpi(2)
-theme.taglist_shape_border_width_focus = dpi(2)
-theme.taglist_shape_border_color = theme.nord10
-theme.taglist_shape_border_color_empty = theme.bg_normal
-theme.taglist_shape_border_color_focus = theme.nord8
 theme.taglist_bg_empty = theme.bg_normal
-theme.taglist_bg_occupied = theme.nord3
-theme.taglist_bg_urgent = theme.nord11
-theme.taglist_bg_focus = theme.nord2
--- theme.taglist_font = theme.title_fonts
+theme.taglist_bg_occupied = theme.bg_normal
+theme.taglist_bg_urgent = theme.bg_normal
+theme.taglist_bg_focus = theme.bg_normal
+theme.taglist_font = theme.title_fonts
 theme.taglist_spacing = 2
--- theme.taglist_fg_focus    = theme.nord6
--- theme.taglist_fg_occupied = theme.nord4
--- theme.taglist_fg_urgent   = theme.nord11
--- theme.taglist_fg_empty    = theme.nord9
-theme.taglist_shape = helpers.squircle(dpi(2))
-theme.taglist_shape_focus = helpers.squircle(dpi(6))
+theme.taglist_fg_focus    = theme.nord6
+theme.taglist_fg_occupied = theme.nord9
+theme.taglist_fg_urgent   = theme.nord11
+theme.taglist_fg_empty    = theme.nord1
 
 -- --- tag preview bling -----
 theme.tag_preview_widget_border_radius = dpi(0) -- Border radius of the widget (With AA)
@@ -217,6 +204,7 @@ theme.toggle_button_inactive = theme.nord3
 theme.toggle_button_active = theme.nord10
 
 -- --------- music -----------
+theme.music = gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
 theme.playerctl_ignore = "firefox"
 theme.playerctl_player = {"mpv", "vlc", "%any"}
 
@@ -226,6 +214,7 @@ theme.date_time_color = theme.nord10
 -- ------- calender ----------
 theme.cal_header_bg = theme.transparent
 theme.cal_week_bg = theme.transparent
+theme.cal_focus_bg = theme.accent_normal
 theme.cal_header_fg = theme.accent_normal
 theme.cal_focus_fg = theme.fg_normal
 theme.cal_week_fg = theme.fg_normal

@@ -61,7 +61,7 @@ function rules.create(clientkeys, clientbuttons)
                 class = {
                     "Caffeine",
                     "Veracrypt",
-                    "GtkFileChooserDialog"
+                    "GtkFileChooserDialog",
                 },
                 name = {
                     "Open File",
@@ -130,7 +130,8 @@ function rules.create(clientkeys, clientbuttons)
                 class = {
                     "File-roller",
                     "feh",
-                    "Emote"
+                    "Emote",
+                    "Xfce4-settings-manager"
                 },
                 name = {
                     "Steam Guard - Computer Authorization Required",
@@ -243,7 +244,7 @@ function rules.create(clientkeys, clientbuttons)
                 class = {},
                 name = {
                     "Volume Control",
-                    "System Monitor"
+                    "System Monitor",
                 }
             },
             properties = {
@@ -251,7 +252,7 @@ function rules.create(clientkeys, clientbuttons)
                 floating = true,
                 above = true,
                 skip_decoration = true,
-                titlebars_enabled = true,
+                titlebars_enabled = false,
                 placement = awful.placement.centered,
                 width = screen_width * 0.4,
                 height = screen_height * 0.55

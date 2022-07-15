@@ -51,7 +51,7 @@ local function widget()
 		wibox.widget(
 		{
 			{
-				font = beautiful.icon_fonts,
+				font = beautiful.icon_fonts .." 14",
 				markup = helpers.colorize_text("", beautiful.blue or beautiful.bg_normal),
 				align = "center",
 				valign = "center",
@@ -142,7 +142,7 @@ local function widget()
 
 	local update_uptime = function()
 		awful.spawn.easy_async_with_shell(
-			"uptime -p | sed 's/up//;s/hours/H/;s/minutes/M/;s/,//'",
+			"uptime -p | sed 's/up//;s/hour/H/;s/minutes/M/;s/,//'",
 			function(stdout)
 				local uptime = stdout:gsub("%\n", "")
 				uptime_time:set_markup(uptime)

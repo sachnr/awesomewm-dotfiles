@@ -84,11 +84,11 @@ theme.useless_gap = dpi(4)
 theme.gap_single_client = false
 
 -- --------- Fonts -----------
-theme.title_fonts = "Roboto Mono Nerd Fonts Bold 11"
+theme.title_fonts = "Roboto Bold 11"
 theme.normal_fonts = "Roboto 11"
-theme.monospace = "Roboto Mono Nerd Fonts 10"
-theme.monospace_bold = "Roboto Mono Nerd Fonts Bold 10"
-theme.icon_fonts = "Material Icons Round 14"
+theme.monospace = "Roboto 10"
+theme.monospace_bold = "Roboto Bold 10"
+theme.icon_fonts = "Material Icons Round"
 
 -- -- clickable container ----
 theme.mouse_enter = theme.bg1
@@ -177,7 +177,7 @@ theme.taglist_bg_empty = theme.bg0_h
 theme.taglist_bg_occupied = theme.bg0_h
 theme.taglist_bg_urgent = theme.bg0_h
 theme.taglist_bg_focus = theme.bg0_h
-theme.taglist_font = theme.title_fonts
+theme.taglist_font = theme.icon_fonts .. "12"
 theme.taglist_spacing = dpi(6)
 theme.taglist_fg_focus = theme.yellow
 theme.taglist_fg_occupied = theme.fg1
@@ -206,8 +206,6 @@ theme.toggle_button_active = theme.blue
 
 -- --------- music -----------
 theme.music = gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "wallpapers/music.png")
-theme.playerctl_update_on_activity = true
-theme.playerctl_backend = "playerctl_cli"
 theme.playerctl_ignore = "firefox"
 theme.playerctl_player = {"music", "vlc", "%any"}
 

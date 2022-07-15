@@ -262,6 +262,13 @@ dashboard.create = function(s)
 			s.dashboard.visible = not s.dashboard.visible
 		end
 	end)
+    awesome.connect_signal("dashboard::close", function(scr)
+		if scr == s then
+            if s.dashboard.visible then
+                s.dashboard.visible = not s.dashboard.visible
+            end
+		end
+	end)
 
     return panel
 end

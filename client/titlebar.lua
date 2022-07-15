@@ -101,6 +101,8 @@ local decorations = function(c, shape, color, unfocused_color, hover_color, size
 
 	local p = button_commands[cmd].track_property
 	local tooltip =awful.tooltip { }
+	tooltip.mode = "outside"
+	tooltip.preferred_positions =  "bottom"
 	tooltip:add_to_object(button_widget)
 	--- Track client property if needed
 	if p then
@@ -242,7 +244,7 @@ client.connect_signal(
 				{
 					layout = wibox.layout.align.horizontal,
 					--- Left
-					nil,
+					floating(c),
 					{
 						--- Middle
 						{
@@ -309,8 +311,6 @@ client.connect_signal(
 					},
 					--- Right
 					{
-						floating(c),
-						helpers.horizontal_pad(dpi(10)),
 						minimize(c),
 						maximize(c),
 						close(c),

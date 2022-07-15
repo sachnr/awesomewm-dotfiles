@@ -108,6 +108,13 @@ keys.clientbuttons =
             c:raise()
         end
     ),
+    awful.button(
+        {},
+        1,
+        function()
+            awesome.emit_signal("dashboard::close", awful.screen.focused())
+        end
+    ),
     awful.button({modkey}, 1, awful.mouse.client.move),
     awful.button({modkey}, 3, awful.mouse.client.resize),
     awful.button(
@@ -240,6 +247,13 @@ keys.globalbuttons =
         1,
         function()
             naughty.destroy_all_notifications()
+        end
+    ),
+    awful.button(
+        {},
+        1,
+        function()
+            awesome.emit_signal("dashboard::close", awful.screen.focused())
         end
     )
 )

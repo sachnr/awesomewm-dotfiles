@@ -51,24 +51,24 @@ theme.blue = "#83A598"
 --  Script to change svg color (run this when changing theme)
 -- =========================================================
 
--- awful.spawn.easy_async_with_shell(
---     [[
---         STR=$HOME"/.config/awesome/icons/places/*"
---         STR2=$HOME"/.config/awesome/icons/flaticons/*"
+awful.spawn.easy_async_with_shell(
+    [[
+        STR=$HOME"/.config/awesome/icons/places/*"
+        STR2=$HOME"/.config/awesome/icons/flaticons/*"
         
---         for x in $STR
---         do
---         sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
---         mv temp $x
---         done
+        for x in $STR
+        do
+        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+        mv temp $x
+        done
 
---         for x in $STR2
---         do
---         sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
---         mv temp $x
---         done
---     ]]
--- )
+        for x in $STR2
+        do
+        sed -e "s/#e5e9f0/#EBDBB2/g" $x > temp
+        mv temp $x
+        done
+    ]]
+)
 
 -- ------- Wallpaper ---------
 theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/gruvbox/gruvbox01.png"
@@ -81,7 +81,7 @@ theme.wibar_height = dpi(36)
 
 -- --------- gaps ------------
 theme.useless_gap = dpi(4)
-theme.gap_single_client = false
+theme.gap_single_client = true
 
 -- --------- Fonts -----------
 theme.title_fonts = "Roboto Bold 11"

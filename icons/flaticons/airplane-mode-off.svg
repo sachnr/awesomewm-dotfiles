@@ -29,7 +29,7 @@
   <defs
      id="defs8" />
   <sodipodi:namedview
-     pagecolor="#EBDBB2"
+     pagecolor="#e5e9f0"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -53,5 +53,5 @@
      d="M 135,90 V 35 c 0,-8.3 -6.7,-15 -15,-15 -8.3,0 -15,6.7 -15,15 V 71.8 L 183.25,150.05 215,160 V 140 Z M 35,52.75 84.85,102.6 25,140 v 20 l 80,-25 v 55 l -20,15 v 15 l 35,-10 35,10 V 205 L 135,190 V 152.75 L 192.25,210 205,197.25 47.75,40 Z"
      id="path2"
      inkscape:connector-curvature="0"
-     style="fill:#EBDBB2;fill-opacity:1;stroke-width:5" />
+     style="fill:#e5e9f0;fill-opacity:1;stroke-width:5" />
 </svg>

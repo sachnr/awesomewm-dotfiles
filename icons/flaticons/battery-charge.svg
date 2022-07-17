@@ -21,7 +21,7 @@
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
    id="defs13" /><sodipodi:namedview
-   pagecolor="#EBDBB2"
+   pagecolor="#e5e9f0"
    bordercolor="#666666"
    borderopacity="1"
    objecttolerance="10"
@@ -53,6 +53,6 @@
    data-old_color="#000000"
    id="path2"
    inkscape:connector-curvature="0"
-   style="fill:#EBDBB2" />
+   style="fill:#e5e9f0" />
 	</g>
 </g></g> </svg>

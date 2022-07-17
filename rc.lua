@@ -45,9 +45,9 @@ apps = {
     power_manager = "xfce4-power-manager-settings",
     terminal = "alacritty",
     launcher = rofi_command,
-    lock = "i3lock-fancy",
+    lock = gears.filesystem.get_configuration_dir() .. "configs/lock",
     screenshot = "flameshot gui",
-    filebrowser = "nemo",
+    filebrowser = "dolphin",
     colorpicker = "gpick -p",
     browser = "firefox",
     taskmanager = "gnome-system-monitor",
@@ -70,9 +70,6 @@ WEATHER = {
 }
 
 -- Startup apps
-
---- Polkit Agent
-helpers.run_once_ps("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 --- picom
 helpers.check_if_running(
     "picom",
@@ -83,6 +80,7 @@ helpers.check_if_running(
 )
 
 local run_on_start_up = {
+    apps.lock,
     "nm-applet --indicator", -- network applet
     "blueman-applet", --bluetooth applet
     "xfce4-power-manager", -- Power manager

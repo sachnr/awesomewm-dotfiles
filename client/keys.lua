@@ -288,7 +288,7 @@ keys.globalkeys =
         {modkey},
         "l",
         function()
-            awful.spawn(apps.lock)
+            awful.util.spawn_with_shell(apps.lock)
         end,
         {description = "Lock the screen", group = "launcher"}
     ),

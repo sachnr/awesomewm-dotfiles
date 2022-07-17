@@ -9,12 +9,21 @@ configuration {
 	click-to-exit: 					true;
     location:                       1;
 }
-
+/* gruv Dark
 * {
-    BG:                             #1D202199;
-    BGA:                            #1D2021;
+    BG:                             #24293399;
+    BGA:                            #2e3440;
     FG:                             #FBF1C7ff;
     UGT:                            #DF5B61ff;
+}
+*/
+
+/* Nord Dark */
+* {
+    BG:                             #2e344099;
+    BGA:                            #4c566a;
+    FG:                             #eceff4ff;
+    UGT:                            #81a1c1ff;
 }
 
 window {

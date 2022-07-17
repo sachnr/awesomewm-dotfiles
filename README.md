@@ -1,11 +1,21 @@
 # Dotfiles
 Awesome wm dotfiles
 
-<a href="url"><img src="https://i.imgur.com/8pl9sEh.png" width="720" ></a>
+<div align="center">
+    <h3>Gruvbox</h3>
+</div>
+
+![](https://i.imgur.com/CjwqHwr.png)
+
+<div align="center">
+    <h3>Nord</h3>
+</div>
+
+![](https://i.imgur.com/KgH0D21.png)
 
 ## Archlinux
 
-### install yay
+### yay
 ```bash
 $ sudo pacman -S base-devel git
 $ git clone https://aur.archlinux.org/yay.git ~/Downloads/yay
@@ -25,17 +35,31 @@ $ meson --buildtype=release . build
 $ ninja -C build
 $ ninja -C build install
 ```
+### Fonts
+```bash
+$ yay -S nerd-fonts-roboto-mono material-icons-git ttf-roboto ttf-ms-win11-auto
+```
+### Laptop
+```bash
+pacman -S acpi acpid acpi_call brightnessctl upower
+```
+### Network
+```bash
+pacman -S nm-connection-editor networkmanager network-manager-applet bluez-utils bluez blueman
+```
+### Media
+```bash
+pacman -S ffmpeg mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl
+```
 ### packages
 ```bash
-$ yay -S i3lock-fancy ttf-roboto caffeine-ng lxappearance-gtk3 nerd-fonts-roboto-mono material-icons-git 
-$ pacman -S acpi acpid acpi_call alacritty bluez-utils bluez blueman brightnessctl flameshot ffmpeg 
-$ pacman -S gnome-system-monitor xfce4-power-manager nemo polkit-gnome rofi upower
-$ pacman -S nm-connection-editor papirus-icon-theme networkmanager network-manager-applet
-$ pacman -S mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl
+$ yay -S i3lock-color caffeine-ng lxappearance-gtk3
+$ pacman -S alacritty flameshot papirus-icon-theme ufw redshift rofi mtpfs gvfs-mtp
+$ pacman -S gnome-system-monitor xfce4-power-manager nemo polkit-gnome gtk3
 ```
 ### Pulseaudio
 ```bash
-$ pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack
+$ pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-jack alsa-utils
 ```
 ### Systemd
 ```bash

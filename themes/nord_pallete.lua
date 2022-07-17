@@ -50,27 +50,27 @@ theme.nord15 = "#b48ead"
 --  Script to change svg color (run this when changing theme)
 -- =========================================================
 
--- awful.spawn.easy_async_with_shell(
---     [[
---         STR=$HOME"/.config/awesome/icons/places/*"
---         STR2=$HOME"/.config/awesome/icons/flaticons/*"
+awful.spawn.easy_async_with_shell(
+    [[
+        STR=$HOME"/.config/awesome/icons/places/*"
+        STR2=$HOME"/.config/awesome/icons/flaticons/*"
         
---         for x in $STR
---         do
---         sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
---         mv temp $x
---         done
+        for x in $STR
+        do
+        sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
+        mv temp $x
+        done
 
---         for x in $STR2
---         do
---         sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
---         mv temp $x
---         done
---     ]]
--- )
+        for x in $STR2
+        do
+        sed -e "s/#EBDBB2/#e5e9f0/g" $x > temp
+        mv temp $x
+        done
+    ]]
+)
 
 -- ------- Wallpaper ---------
-theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/Nord-underwater.png"
+theme.wallpaper = gfs.get_configuration_dir() .. "wallpapers/Nord.png"
 
 -- ---- profile picture ------
 theme.pfp = gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "icons/user/profile.jpg")

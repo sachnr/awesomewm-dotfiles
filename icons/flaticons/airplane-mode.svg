@@ -29,7 +29,7 @@
   <defs
      id="defs10" />
   <sodipodi:namedview
-     pagecolor="#EBDBB2"
+     pagecolor="#e5e9f0"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -53,10 +53,10 @@
      d="M 120,120"
      id="path2"
      inkscape:connector-curvature="0"
-     style="fill:#EBDBB2;fill-opacity:1;stroke-width:5" />
+     style="fill:#e5e9f0;fill-opacity:1;stroke-width:5" />
   <path
      d="M 215,160 V 140 L 135,90 V 35 c 0,-8.3 -6.7,-15 -15,-15 -8.3,0 -15,6.7 -15,15 v 55 l -80,50 v 20 l 80,-25 v 55 l -20,15 v 15 l 35,-10 35,10 v -15 l -20,-15 v -55 z"
      id="path4"
      inkscape:connector-curvature="0"
-     style="fill:#EBDBB2;fill-opacity:1;stroke-width:5" />
+     style="fill:#e5e9f0;fill-opacity:1;stroke-width:5" />
 </svg>

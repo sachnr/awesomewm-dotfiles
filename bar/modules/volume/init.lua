@@ -60,7 +60,7 @@ local function get_icon(isHeadphone, ismuted, volume)
     end
 end
 
-local update_widget = function()
+local update_widget_icon = function()
     awful.spawn.easy_async_with_shell([[wpctl get-volume @DEFAULT_AUDIO_SINK@]], function(stdout)
         local volume = tonumber(stdout:match("(%d%.%d%d?)")) * 100
         local icon
@@ -87,13 +87,13 @@ widget.iconbg:connect_signal("button::press", function(_, _, _, button)
     if button == 1 then
         wp.setMute("sink")
         awesome.emit_signal("volume::update_slider")
-        update_widget()
+        update_widget_icon()
     end
     if button == 3 then
         wp.toggleSink(headphone)
         headphone = not headphone
         awesome.emit_signal("volume::update_slider")
-        update_widget()
+        update_widget_icon()
     end
 end)
 
@@ -103,7 +103,7 @@ helper.hover_hand(widget.slider)
 -- Connect to `property::value` to use the value on change
 widget.slider:connect_signal("property::value", function(_, value)
     wp.setVolume("sink", value)
-    update_widget()
+    update_widget_icon()
 end)
 
 awesome.connect_signal("volume::update_slider", function()

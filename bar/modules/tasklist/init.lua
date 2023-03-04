@@ -9,15 +9,15 @@ local dpi = beautiful.xresources.apply_dpi
 local tasklist = function(s)
     local mytasklist = awful.widget.tasklist({
         screen = s,
-        filter = awful.widget.tasklist.filter.currenttags,
+        -- filter = awful.widget.tasklist.filter.currenttags,
+        filter = awful.widget.tasklist.source.all_clients,
         buttons = {
             awful.button({}, 1, function(c)
-                ---@diagnostic disable-next-line: undefined-global
-                if c == client.focus then
-                    c.minimized = true
-                else
-                    c:emit_signal("request::activate", "tasklist", { raise = true })
-                end
+                -- if c == client.focus then
+                -- c.minimized = true
+                -- else
+                c:emit_signal("request::activate", "tasklist", { raise = true, switch_to_tags = true })
+                -- end
             end),
             awful.button({}, 3, function() awful.menu.client_list({ theme = { width = 250 } }) end),
             awful.button({}, 4, function() awful.client.focus.byidx(1) end),

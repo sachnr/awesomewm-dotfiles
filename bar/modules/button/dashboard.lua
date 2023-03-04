@@ -19,7 +19,7 @@ M.setup = function(s)
         shape = helpers.rounded_rect(dpi(4)),
         placement = function(w)
             awful.placement.top_right(w, {
-                margins = { bottom = dpi(5), top = dpi(36), left = dpi(5), right = dpi(5) },
+                margins = { bottom = dpi(5), top = dpi(40), left = dpi(5), right = dpi(5) },
             })
         end,
         widget = {

@@ -33,13 +33,37 @@ helper.hover({
 ---@diagnostic disable-next-line: undefined-global
 awesome.connect_signal("mpd::status", function(t)
     setmetatable(t, { __index = { title = "offline" } })
-    local title = string.format(
-        " <span foreground='%s'></span>  <span foreground='%s'>%s</span> ",
-        pallete.brightblue,
-        pallete.foreground,
-        t.title
-    )
+    local title
+    local status = function()
+        if t.status:match("playing") then return true end
+        return false
+    end
+    if status() then
+        title = string.format(
+            " <span foreground='%s'>󰐊</span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
+            pallete.brightaqua,
+            pallete.foreground,
+            t.title,
+            pallete.brightaqua
+        )
+    else
+        title = string.format(
+            " <span foreground='%s'>󰏤</span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
+            pallete.brightblue,
+            pallete.foreground,
+            t.title,
+            pallete.brightblue
+        )
+    end
+
     widget.text:set_markup(title)
+end)
+
+widget_boxed:connect_signal("button::press", function(_, _, _, button)
+    if button == 1 then
+        ---@diagnostic disable-next-line: undefined-global
+        awesome.emit_signal("music::toggle", awful.screen.focused())
+    end
 end)
 
 return widget_boxed

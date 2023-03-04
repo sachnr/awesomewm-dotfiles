@@ -30,7 +30,8 @@ theme.fg_focus = pallete.foreground
 theme.fg_urgent = pallete.black
 theme.fg_minimize = pallete.black
 
-theme.useless_gap = dpi(2)
+theme.useless_gap = dpi(4)
+theme.gap_single_client = true
 theme.border_width = dpi(1)
 theme.border_color_normal = pallete.background2
 theme.border_color_active = pallete.brightblue
@@ -63,7 +64,6 @@ theme.menu_bg_focus = pallete.blue
 theme.menu_fg_normal = pallete.foreground
 theme.menu_bg_normal = pallete.background
 
-
 -- Variables set for theming notifications:
 -- notification_font
 -- notification_[bg|fg]
@@ -81,6 +81,7 @@ theme.menu_bg_normal = pallete.background
 
 theme.wallpaper = gfs.get_configuration_dir() .. "assets/350066.jpg"
 theme.pfp = gfs.get_configuration_dir() .. "assets/pfp.gif"
+theme.cover_art = gfs.get_configuration_dir() .. "assets/albumart.jpg"
 
 local layouts = {
     layout_fairh = themes_path .. "default/layouts/fairhw.png",

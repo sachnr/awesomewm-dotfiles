@@ -37,6 +37,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     s.calendar = require("bar.modules.calendar").setup(s)
     s.dashboard = require("bar.modules.button.dashboard").setup(s)
+    s.music_panel = require("bar.modules.mpd.popup").setup(s)
 
     awful.wallpaper({
         screen = s,

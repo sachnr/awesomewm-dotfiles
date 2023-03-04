@@ -48,7 +48,7 @@ M.padding_h = function(width)
 end
 
 --- adds hover properties to a background container
---- to add hover to box_widget use 'widget:get_children_by_id("box_container")[1]' as widget name
+--- to add hover to box_widget use 'widget:get_children_by_id("box_container")\[1\]' as widget name
 ---@param t {widget: table, newbg: string, oldbg: string, hover_cursor: string}
 M.hover = function(t)
     setmetatable(t, { __index = { hover_cursor = "hand1" } })

@@ -6,65 +6,36 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local dpi = beautiful.xresources.apply_dpi
 
-local icon = wibox.widget({
-    {
-        id = "icon",
-        markup = helpers.color_text_icon("", pallete.brightblue, "11"),
-        align = "center",
-        valign = "center",
-        widget = wibox.widget.textbox,
-    },
-    nil,
-    nil,
-    bg = pallete.background,
-    shape = gears.shape.circle,
-    forced_height = dpi(20),
-    forced_width = dpi(20),
-    widget = wibox.container.background,
-    layout = wibox.layout.align.horizontal,
-})
-
 local user_image = wibox.widget({
     {
         {
-            {
-                image = beautiful.pfp,
-                resize = true,
-                clip_shape = gears.shape.circle,
-                halign = "center",
-                valign = "center",
-                widget = wibox.widget.imagebox,
-            },
-            border_width = dpi(2),
-            border_color = pallete.brightblack,
-            shape = gears.shape.circle,
-            widget = wibox.container.background,
+            image = beautiful.pfp,
+            resize = true,
+            clip_shape = gears.shape.circle,
+            halign = "center",
+            valign = "center",
+            widget = wibox.widget.imagebox,
         },
-        strategy = "exact",
-        height = dpi(100),
-        width = dpi(100),
-        widget = wibox.container.constraint,
+        border_width = dpi(2),
+        border_color = pallete.brightblack,
+        shape = gears.shape.circle,
+        widget = wibox.container.background,
     },
-    {
-        nil,
-        nil,
-        {
-            nil,
-            nil,
-            icon,
-            layout = wibox.layout.align.horizontal,
-            expand = "none",
-        },
-        layout = wibox.layout.align.vertical,
-        expand = "none",
-    },
-    layout = wibox.layout.stack,
+    strategy = "max",
+    height = dpi(100),
+    width = dpi(100),
+    widget = wibox.container.constraint,
 })
 
 local user_name = wibox.widget({
     widget = wibox.widget.textbox,
     ---@diagnostic disable-next-line: param-type-mismatch
-    markup = helpers.color_text(os.getenv("USER"), pallete.brightblue),
+    markup = string.format(
+        '<span foreground="%s" font="%s Bold 11"> %s </span>',
+        pallete.foreground,
+        beautiful.font_alt,
+        os.getenv("USER")
+    ),
     font = beautiful.font_alt .. " 12",
     valign = "center",
 })
@@ -76,10 +47,15 @@ local uptime = wibox.widget({
 })
 
 local update_uptime = function()
-    awful.spawn.easy_async_with_shell(
-        "uptime | awk '{print $3}' | sed 's/,//;s/:/H /;s/$/M/'",
-        function(stdout) uptime:set_markup(stdout:gsub("%\n", "")) end
-    )
+    awful.spawn.easy_async_with_shell("uptime | awk '{print $3}' | sed 's/,//;s/:/H /;s/$/M/'", function(stdout)
+        local time = string.format(
+            '<span foreground="%s" font="%s Bold 9"> %s </span>',
+            pallete.brightblue,
+            beautiful.font_alt,
+            stdout:gsub("%\n", "")
+        )
+        uptime:set_markup(time)
+    end)
 end
 
 gears.timer({
@@ -90,7 +66,7 @@ gears.timer({
 })
 
 local tasks = {
-    -- lock = "i3lock",
+    lock = "i3lock",
     sleep = "systemctl suspend",
     quit = 'echo "awesome.quit()" | awesome-client',
     restart = "systemctl reboot",
@@ -98,7 +74,7 @@ local tasks = {
 }
 
 local icons = {
-    -- lock = "  ",
+    lock = "  ",
     sleep = "  ",
     quit = "  ",
     restart = "  ",
@@ -124,7 +100,8 @@ for key, value in pairs(tasks) do
     power_widgets[key] = helpers.box_widget({
         widget = widget,
         bg_color = pallete.background2,
-        margins = dpi(6),
+        margins = dpi(2),
+        horizontal_padding = dpi(0),
     })
 
     helpers.hover({
@@ -170,6 +147,7 @@ local profile = wibox.widget({
         nil,
         nil,
         {
+            power_widgets.lock,
             power_widgets.sleep,
             power_widgets.quit,
             power_widgets.restart,

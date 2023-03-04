@@ -69,9 +69,7 @@ local update_widget = function()
         else
             icon = get_icon(headphone, false, volume)
         end
-        widget.slider:set_value(volume)
         widget.iconbg.icon:set_markup(helper.color_text(icon, pallete.brightblue))
-        widget.iconbg:emit_signal("widget.iconbg::redraw_needed")
     end)
 end
 
@@ -82,17 +80,19 @@ awful.spawn.easy_async_with_shell("pactl list sinks |& grep -E 'Active Port: ana
     else
         headphone = true
     end
-    update_widget()
+    awesome.emit_signal("volume::update_slider")
 end)
 
 widget.iconbg:connect_signal("button::press", function(_, _, _, button)
     if button == 1 then
         wp.setMute("sink")
+        awesome.emit_signal("volume::update_slider")
         update_widget()
     end
     if button == 3 then
         wp.toggleSink(headphone)
         headphone = not headphone
+        awesome.emit_signal("volume::update_slider")
         update_widget()
     end
 end)
@@ -104,6 +104,13 @@ helper.hover_hand(widget.slider)
 widget.slider:connect_signal("property::value", function(_, value)
     wp.setVolume("sink", value)
     update_widget()
+end)
+
+awesome.connect_signal("volume::update_slider", function()
+    awful.spawn.easy_async_with_shell([[wpctl get-volume @DEFAULT_AUDIO_SINK@]], function(stdout)
+        local volume = tonumber(stdout:match("(%d%.%d%d?)")) * 100
+        widget.slider:set_value(volume)
+    end)
 end)
 
 local volume_boxed = helper.box_widget({

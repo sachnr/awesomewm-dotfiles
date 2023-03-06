@@ -20,10 +20,14 @@ theme.font_alt = "RobotoMono Nerd Font"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
-theme.bg_focus = pallete.blue .. "a0"
-theme.bg_urgent = pallete.red .. "a0"
+theme.bg_focus = pallete.background2
+theme.bg_urgent = pallete.red
 theme.bg_minimize = pallete.background2
-theme.bg_systray = pallete.background2
+
+theme.module_bg = pallete.background
+theme.module_bg_focused = pallete.background2
+
+theme.bg_systray = theme.module_bg
 
 theme.fg_normal = pallete.foreground
 theme.fg_focus = pallete.foreground
@@ -32,14 +36,14 @@ theme.fg_minimize = pallete.black
 
 theme.useless_gap = dpi(4)
 theme.gap_single_client = true
-theme.border_width = dpi(1)
-theme.border_color_normal = pallete.background2
-theme.border_color_active = pallete.brightblue
+theme.border_width = dpi(2)
+theme.border_color_normal = pallete.black
+theme.border_color_active = pallete.brightblack
 theme.border_color_marked = pallete.brightgreen
 
-theme.taglist_bg_empty = pallete.background2
-theme.taglist_bg_occupied = pallete.background2
-theme.taglist_bg_urgent = pallete.background2
+theme.taglist_bg_empty = theme.module_bg
+theme.taglist_bg_occupied = theme.module_bg
+theme.taglist_bg_urgent = theme.module_bg
 theme.taglist_bg_focus = pallete.blue
 theme.taglist_font = theme.icon_font .. " 11"
 theme.taglist_spacing = dpi(2)
@@ -49,9 +53,9 @@ theme.taglist_fg_urgent = pallete.brightred
 theme.taglist_fg_empty = pallete.brightblack
 theme.taglist_shape = helper.rounded_rect(dpi(4))
 
-theme.tasklist_bg_normal = pallete.background2
-theme.tasklist_bg_focus = pallete.background3
-theme.tasklist_bg_urgent = pallete.background2
+theme.tasklist_bg_normal = theme.module_bg
+theme.tasklist_bg_focus = pallete.blue
+theme.tasklist_bg_urgent = theme.module_bg_focused
 theme.tasklist_fg_urgent = pallete.brightred
 
 theme.menu_font = theme.font_alt .. " 9"
@@ -79,7 +83,8 @@ theme.menu_bg_normal = pallete.background
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-theme.wallpaper = gfs.get_configuration_dir() .. "assets/350066.jpg"
+---@diagnostic disable-next-line: param-type-mismatch
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/black-minimal.jpg")
 theme.pfp = gfs.get_configuration_dir() .. "assets/pfp.gif"
 theme.cover_art = gfs.get_configuration_dir() .. "assets/albumart.jpg"
 

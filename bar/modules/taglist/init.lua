@@ -1,7 +1,8 @@
 -- default template
 local awful = require("awful.init")
 local helper = require("helper")
-local dpi = require("beautiful").xresources.apply_dpi
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 local pallete = require("theme.pallete")
 
 local function taglist(s)
@@ -17,7 +18,7 @@ local function taglist(s)
 
     local taglist_boxed = helper.box_widget({
         widget = mytaglist,
-        bg_color = pallete.background2,
+        bg_color = beautiful.module_bg,
         margins = dpi(6),
         width = dpi(200),
     })

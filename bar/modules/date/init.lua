@@ -17,15 +17,15 @@ local date = wibox.widget.textclock(
 
 local date_boxed = helper.box_widget({
     widget = date,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
     horizontal_padding = dpi(12),
 })
 
 helper.hover({
     widget = date_boxed:get_children_by_id("box_container")[1],
-    oldbg = pallete.background2,
-    newbg = pallete.background3,
+    oldbg = beautiful.module_bg,
+    newbg = beautiful.module_bg_focused,
 })
 
 date_boxed:connect_signal("button::press", function(_, _, _, button)

@@ -3,7 +3,6 @@ local awful = require("awful.init")
 local helper = require("helper")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local pallete = require("theme.pallete")
 local dpi = beautiful.xresources.apply_dpi
 
 local tasklist = function(s)
@@ -61,7 +60,7 @@ local tasklist = function(s)
 
     local mytasklist_boxed = helper.box_widget({
         widget = mytasklist,
-        bg_color = pallete.background2,
+        bg_color = beautiful.module_bg,
         margins = dpi(4),
     })
 

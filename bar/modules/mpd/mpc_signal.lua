@@ -29,9 +29,10 @@ end
 local function emit_status()
     awful.spawn.easy_async_with_shell(cmds.status, function(stdout)
         local dir = stdout:match("file:{(.-)}")
-        local file_path = cmds.music_dir .. dir
-        dump_cover(file_path)
-
+        if not dir:match(nil) then
+            local file_path = cmds.music_dir .. dir
+            dump_cover(file_path)
+        end
         local t = {
             artist = stdout:match("artist:{(.-)}"),
             title = stdout:match("title:{(.-)}"),

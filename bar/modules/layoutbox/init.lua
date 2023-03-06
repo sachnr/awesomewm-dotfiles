@@ -1,6 +1,7 @@
 local awful = require("awful")
 local helper = require("helper")
-local dpi = require("beautiful").xresources.apply_dpi
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 local pallete = require("theme.pallete")
 
 local function layout(s)
@@ -16,14 +17,14 @@ local function layout(s)
 
     local layoutbox_boxed = helper.box_widget({
         widget = mylayoutbox,
-        bg_color = pallete.background2,
+        bg_color = beautiful.module_bg,
         margins = dpi(6),
     })
 
     helper.hover({
         widget = layoutbox_boxed:get_children_by_id("box_container")[1],
-        oldbg = pallete.background,
-        newbg = pallete.background2,
+        oldbg = beautiful.module_bg,
+        newbg = pallete.module_bg_focused,
     })
 
     return layoutbox_boxed

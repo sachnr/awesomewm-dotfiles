@@ -7,11 +7,6 @@ awful.spawn.easy_async_with_shell(
 )
 
 awful.spawn.easy_async_with_shell(
-    'ps x | grep "picom" | grep -v grep | awk "{print $1}" | xargs kill',
-    function() awful.spawn("picom") end
-)
-
-awful.spawn.easy_async_with_shell(
     'ps x | grep "nm-applet" | grep -v grep | awk "{print $1}" | xargs kill',
     function() awful.spawn("nm-applet --indicator") end
 )

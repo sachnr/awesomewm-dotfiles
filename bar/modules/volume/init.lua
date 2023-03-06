@@ -11,7 +11,7 @@ local dpi = beautiful.xresources.apply_dpi
 local widget = wibox.widget({
     {
         id = "iconbg",
-        bg = pallete.background2,
+        bg = beautiful.pallete_bg,
         shape = gears.shape.circle,
         widget = wibox.container.background,
         {
@@ -81,6 +81,7 @@ awful.spawn.easy_async_with_shell("pactl list sinks |& grep -E 'Active Port: ana
         headphone = true
     end
     awesome.emit_signal("volume::update_slider")
+    update_widget_icon()
 end)
 
 widget.iconbg:connect_signal("button::press", function(_, _, _, button)
@@ -97,7 +98,7 @@ widget.iconbg:connect_signal("button::press", function(_, _, _, button)
     end
 end)
 
-helper.hover({ widget = widget.iconbg, newbg = pallete.background3, oldbg = pallete.background2 })
+helper.hover({ widget = widget.iconbg, newbg = beautiful.module_bg_focused, oldbg = beautiful.module_bg })
 helper.hover_hand(widget.slider)
 
 -- Connect to `property::value` to use the value on change
@@ -115,7 +116,7 @@ end)
 
 local volume_boxed = helper.box_widget({
     widget = widget,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
 })
 

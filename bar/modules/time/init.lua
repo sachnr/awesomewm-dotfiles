@@ -16,7 +16,7 @@ local time = wibox.widget.textclock(
 
 local time_boxed = helper.box_widget({
     widget = time,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
     horizontal_padding = dpi(12),
 })

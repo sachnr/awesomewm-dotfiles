@@ -99,15 +99,15 @@ for key, value in pairs(tasks) do
 
     power_widgets[key] = helpers.box_widget({
         widget = widget,
-        bg_color = pallete.background2,
+        bg_color = beautiful.module_bg,
         margins = dpi(2),
         horizontal_padding = dpi(0),
     })
 
     helpers.hover({
         widget = power_widgets[key]:get_children_by_id("box_container")[1],
-        newbg = pallete.background3,
-        oldbg = pallete.background2,
+        newbg = beautiful.module_bg_focused,
+        oldbg = beautiful.module_bg,
     })
 
     power_widgets[key]:connect_signal("button::press", function(_, _, _, button)

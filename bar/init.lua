@@ -28,6 +28,7 @@ local taglist = require("bar.modules.taglist")
 local tasklist = require("bar.modules.tasklist")
 local button = require("bar.modules.button")
 local mpd = require("bar.modules.mpd")
+local redshift = require("bar.modules.redshift")
 
 --      ────────────────────────────────────────────────────────────
 
@@ -63,6 +64,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             expand = "none",
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
+                layout(s),
                 taglist(s),
                 tasklist(s),
             },
@@ -73,10 +75,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
                 systray,
+                redshift,
                 volume,
                 date,
                 time,
-                layout(s),
                 button,
             },
         },

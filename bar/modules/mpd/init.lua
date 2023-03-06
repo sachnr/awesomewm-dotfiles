@@ -20,14 +20,14 @@ local widget = wibox.widget({
 
 local widget_boxed = helper.box_widget({
     widget = widget,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
 })
 
 helper.hover({
     widget = widget_boxed:get_children_by_id("box_container")[1],
-    newbg = pallete.background3,
-    oldbg = pallete.background2,
+    newbg = beautiful.module_bg_focused,
+    oldbg = beautiful.module_bg,
 })
 
 ---@diagnostic disable-next-line: undefined-global

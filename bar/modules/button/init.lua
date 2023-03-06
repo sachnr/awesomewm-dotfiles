@@ -2,7 +2,8 @@ local awful = require("awful")
 local wibox = require("wibox.init")
 local pallete = require("theme.pallete")
 local helper = require("helper")
-local dpi = require("beautiful").xresources.apply_dpi
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 local widget = wibox.widget({
     {
@@ -17,14 +18,14 @@ local widget = wibox.widget({
 
 local widget_boxed = helper.box_widget({
     widget = widget,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
 })
 
 helper.hover({
     widget = widget_boxed:get_children_by_id("box_container")[1],
-    newbg = pallete.background3,
-    oldbg = pallete.background2,
+    oldbg = beautiful.module_bg,
+    newbg = beautiful.module_bg_focused,
 })
 
 widget_boxed:connect_signal("button::press", function(_, _, _, button)

@@ -1,6 +1,5 @@
 local wibox = require("wibox.init")
 local helper = require("helper")
-local pallete = require("theme.pallete")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
@@ -11,7 +10,7 @@ systray.forced_height = (dpi(20))
 
 local systray_boxed = helper.box_widget({
     widget = systray,
-    bg_color = pallete.background2,
+    bg_color = beautiful.module_bg,
     margins = dpi(6),
 })
 

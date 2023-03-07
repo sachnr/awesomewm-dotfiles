@@ -13,6 +13,10 @@ end
 ---@param audio string source/sink
 M.setMute = function(audio) awful.spawn("wpctl set-mute @DEFAULT_AUDIO_" .. string.upper(audio) .. "@ toggle") end
 
+M.incVol = function(percentage) awful.spawn(string.format("wpctl set-volume @DEFAULT_AUDIO_SINK@ %s%%+", percentage)) end
+
+M.decVol = function(percentage) awful.spawn(string.format("wpctl set-volume @DEFAULT_AUDIO_SINK@ %s%%-", percentage)) end
+
 --- toggle sink output profile
 ---@param headphone boolean
 M.toggleSink = function(headphone)

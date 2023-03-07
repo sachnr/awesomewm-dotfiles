@@ -3,10 +3,9 @@ local wibox = require("wibox.init")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local helper = require("helper")
-local awful = require("awful")
 local pallete = require("theme.pallete")
-local headphone
 local dpi = beautiful.xresources.apply_dpi
+require("bar.modules.volume.signal")
 
 local widget = wibox.widget({
     {
@@ -40,78 +39,27 @@ local widget = wibox.widget({
     layout = wibox.layout.align.horizontal,
 })
 
---      ────────────────────────────────────────────────────────────
-
-local function get_icon(isHeadphone, ismuted, volume)
-    if ismuted then
-        if isHeadphone then return " 󰟎 " end
-        return "  "
-    end
-    if isHeadphone then
-        return " 󰋋 "
-    else
-        if volume < 50 then
-            return "  "
-        elseif volume < 100 then
-            return "  "
-        else
-            return "  "
-        end
-    end
-end
-
-local update_widget_icon = function()
-    awful.spawn.easy_async_with_shell([[wpctl get-volume @DEFAULT_AUDIO_SINK@]], function(stdout)
-        local volume = tonumber(stdout:match("(%d%.%d%d?)")) * 100
-        local icon
-        if stdout:match("MUTED") then
-            icon = get_icon(headphone, true, volume)
-        else
-            icon = get_icon(headphone, false, volume)
-        end
-        widget.iconbg.icon:set_markup(helper.color_text(icon, pallete.brightblue))
-    end)
-end
-
--- run on startup once
-awful.spawn.easy_async_with_shell("pactl list sinks |& grep -E 'Active Port: analog'", function(stdout)
-    if stdout:match("lineout") then
-        headphone = false
-    else
-        headphone = true
-    end
-    awesome.emit_signal("volume::update_slider")
-    update_widget_icon()
-end)
-
-widget.iconbg:connect_signal("button::press", function(_, _, _, button)
-    if button == 1 then
-        wp.setMute("sink")
-        awesome.emit_signal("volume::update_slider")
-        update_widget_icon()
-    end
-    if button == 3 then
-        wp.toggleSink(headphone)
-        headphone = not headphone
-        awesome.emit_signal("volume::update_slider")
-        update_widget_icon()
-    end
-end)
-
 helper.hover({ widget = widget.iconbg, newbg = beautiful.module_bg_focused, oldbg = beautiful.module_bg })
+
 helper.hover_hand(widget.slider)
 
--- Connect to `property::value` to use the value on change
-widget.slider:connect_signal("property::value", function(_, value)
-    wp.setVolume("sink", value)
-    update_widget_icon()
+widget.iconbg:connect_signal("button::press", function(_, _, _, button)
+    if button == 1 then wp.setMute("sink") end
+    if button == 3 then
+        wp.toggleSink(_G.headphones)
+        _G.headphones = not _G.headphones
+    end
 end)
 
-awesome.connect_signal("volume::update_slider", function()
-    awful.spawn.easy_async_with_shell([[wpctl get-volume @DEFAULT_AUDIO_SINK@]], function(stdout)
-        local volume = tonumber(stdout:match("(%d%.%d%d?)")) * 100
-        widget.slider:set_value(volume)
-    end)
+-- Connect to `property::value` to use the value on change
+widget.slider:connect_signal("button::press", function(_, _, _, button)
+    if button == 4 then wp.incVol("5") end
+    if button == 5 then wp.decVol("5") end
+end)
+
+awesome.connect_signal("volume::update", function(volume, icon)
+    widget.iconbg.icon:set_markup(helper.color_text(icon, pallete.brightblue))
+    widget.slider:set_value(volume)
 end)
 
 local volume_boxed = helper.box_widget({

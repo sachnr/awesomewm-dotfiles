@@ -24,7 +24,7 @@ local function layout(s)
     helper.hover({
         widget = layoutbox_boxed:get_children_by_id("box_container")[1],
         oldbg = beautiful.module_bg,
-        newbg = pallete.module_bg_focused,
+        newbg = beautiful.module_bg_focused,
     })
 
     return layoutbox_boxed

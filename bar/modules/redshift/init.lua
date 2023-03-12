@@ -40,6 +40,13 @@ awesome.connect_signal("redshift::toggle", function()
     else
         awful.spawn.easy_async("redshift -l 0:0 -t 3600:3600")
         widget_boxed:get_children_by_id("box_container")[1]:set_bg(beautiful.module_bg_focused)
+        widget:get_children_by_id("text")[1]:set_markup(
+            string.format(
+                '<span foreground="%s"> 󱩌 </span><span foreground="%s">redshift</span>',
+                pallete.brightred,
+                pallete.foreground
+            )
+        )
         redshift_on = not redshift_on
     end
 end)
@@ -53,6 +60,13 @@ awesome.connect_signal("redshift::off", function()
         function()
             redshift_on = not redshift_on
             widget_boxed:get_children_by_id("box_container")[1]:set_bg(beautiful.module_bg)
+            widget:get_children_by_id("text")[1]:set_markup(
+                string.format(
+                    '<span foreground="%s"> 󱩌 </span><span foreground="%s">redshift</span>',
+                    pallete.brightblue,
+                    pallete.foreground
+                )
+            )
         end
     )
 end)

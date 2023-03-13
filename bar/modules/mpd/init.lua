@@ -40,7 +40,7 @@ awesome.connect_signal("mpd::status", function(t)
     end
     if status() then
         title = string.format(
-            " <span foreground='%s'>󰐊</span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
+            " <span foreground='%s'></span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
             pallete.brightaqua,
             pallete.foreground,
             t.title,
@@ -48,7 +48,7 @@ awesome.connect_signal("mpd::status", function(t)
         )
     else
         title = string.format(
-            " <span foreground='%s'>󰏤</span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
+            " <span foreground='%s'></span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
             pallete.brightblue,
             pallete.foreground,
             t.title,

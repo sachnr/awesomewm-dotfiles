@@ -42,13 +42,15 @@ local cover_art = wibox.widget({
 
 local tasks = {
     prev = function() return mpc.prev() end,
-    toggle = function() return mpc.toggle() end,
+    play = function() return mpc.toggle() end,
+    pause = function() return mpc.toggle() end,
     next = function() return mpc.next() end,
 }
 
 local icons = {
     prev = "󰒮",
-    toggle = "󰐊",
+    play = "󰐊",
+    pause = "󰏤",
     next = "󰒭",
 }
 
@@ -114,7 +116,8 @@ local widget = wibox.widget({
                     {
                         helpers.padding_h(dpi(4)),
                         music_controls.prev,
-                        music_controls.toggle,
+                        music_controls.play,
+                        music_controls.pause,
                         music_controls.next,
                         spacing = dpi(10),
                         layout = wibox.layout.fixed.horizontal,
@@ -147,6 +150,19 @@ awesome.connect_signal("mpd::status", function(t)
     setmetatable(t, { __index = { title = "offline", artist = "" } })
     local artist_name = string.format("<span foreground='%s'> %s </span> ", pallete.brightblue, t.artist)
     local title = string.format("<span foreground='%s'> %s </span> ", pallete.foreground, t.title)
+
+    local status = function()
+        if t.status:match("playing") then return true end
+        return false
+    end
+
+    if status() then
+        music_controls.play.visible = false
+        music_controls.pause.visible = true
+    else
+        music_controls.play.visible = true
+        music_controls.pause.visible = false
+    end
 
     artist:set_markup(artist_name)
     song_title:set_markup(title)

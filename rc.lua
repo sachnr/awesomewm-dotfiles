@@ -16,6 +16,13 @@ require("autostart")
 ---@diagnostic disable-next-line: undefined-global
 client.connect_signal("mouse::enter", function(c) c:activate({ context = "mouse_enter", raise = false }) end)
 
+-- dont maximize client automatically
+client.connect_signal("request::manage", function(c)
+    c.maximized = false
+    c.maximized_horizontal = false
+    c.maximized_vertical = false
+end)
+
 ---@diagnostic disable-next-line: param-type-mismatch
 collectgarbage("setpause", 110)
 ---@diagnostic disable-next-line: param-type-mismatch

@@ -1,5 +1,5 @@
 return {
-    background = "#212121",
+    background = "#191919",
     background2 = "#2c2c2c",
     background3 = "#313131",
     foreground = "#D0D0D0",

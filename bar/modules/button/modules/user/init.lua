@@ -87,7 +87,7 @@ for key, value in pairs(tasks) do
     local widget = wibox.widget({
         {
             id = "icon",
-            markup = helpers.color_text_icon(icons[key], pallete.brightblue, " 11"),
+            markup = helpers.color_text_icon(icons[key], pallete.foreground, " 11"),
             widget = wibox.widget.textbox,
         },
         nil,
@@ -104,11 +104,19 @@ for key, value in pairs(tasks) do
         horizontal_padding = dpi(0),
     })
 
-    helpers.hover({
-        widget = power_widgets[key]:get_children_by_id("box_container")[1],
-        newbg = beautiful.module_bg_focused,
-        oldbg = beautiful.module_bg,
-    })
+    widget:connect_signal("mouse::enter", function()
+        widget.icon.markup = helpers.color_text_icon(icons[key], pallete.brightblue, " 11")
+        ---@diagnostic disable-next-line: undefined-global
+        local w = mouse.current_wibox
+        if w then w.cursor = "hand1" end
+    end)
+
+    widget:connect_signal("mouse::leave", function()
+        widget.icon.markup = helpers.color_text_icon(icons[key], pallete.foreground, " 11")
+        ---@diagnostic disable-next-line: undefined-global
+        local w = mouse.current_wibox
+        if w then w.cursor = "left_ptr" end
+    end)
 
     power_widgets[key]:connect_signal("button::press", function(_, _, _, button)
         if button == 1 then
@@ -120,6 +128,7 @@ for key, value in pairs(tasks) do
 end
 
 local profile = wibox.widget({
+    helpers.padding_v(dpi(10)),
     {
         user_image,
         {
@@ -143,7 +152,6 @@ local profile = wibox.widget({
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(2),
     },
-    helpers.padding_v(dpi(20)),
     {
         nil,
         nil,
@@ -165,7 +173,8 @@ local boxed_profile = helpers.box_widget({
     widget = profile,
     bg_color = pallete.background,
     shape = helpers.rounded_rect(dpi(8)),
-    margin = dpi(6),
+    margins = dpi(2),
+    forced_height = dpi(140)
 })
 
 return boxed_profile

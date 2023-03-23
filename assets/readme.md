@@ -1,4 +1,9 @@
-### kitty theme
+### Themes
+
+- **GTK**: [oomox](https://github.com/sachnr/dotfiles/blob/main/pkgs/themix-gui.nix)
+- **QT**: fusion _generated with oomox_
+- **NVIM**: [base46](https://github.com/sachnr/base46)
+- **KITTY**: _dark theme_
 
 ```
 background #171717
@@ -34,4 +39,4 @@ inactive_tab_foreground #727272
 url_color #90A959
 ```
 
-**gtk theme**: plata noir
+**[nix dotfiles](https://github.com/sachnr/dotfiles)**

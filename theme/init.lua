@@ -84,7 +84,7 @@ theme.menu_bg_normal = pallete.background
 --theme.bg_widget = "#cc0000"
 
 ---@diagnostic disable-next-line: param-type-mismatch
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/black-minimal.jpg")
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. pallete.wallpaper)
 theme.pfp = gfs.get_configuration_dir() .. "assets/pfp.gif"
 theme.cover_art = gfs.get_configuration_dir() .. "assets/albumart.jpg"
 
@@ -110,6 +110,7 @@ local layouts = {
 -- You can use your own layout icons like this:
 theme.layout_tile = gears.color.recolor_image(layouts.layout_tile, pallete.brightblue)
 theme.layout_floating = gears.color.recolor_image(layouts.layout_floating, pallete.brightblue)
+theme.layout_tiletop = gears.color.recolor_image(layouts.layout_tiletop, pallete.brightblue)
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)

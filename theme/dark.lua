@@ -22,4 +22,5 @@ return {
     brightpurple = "#AA759F",
     brightaqua = "#88afa2",
     brightgray = "#AFAFAF",
+    wallpaper = "assets/black-minimal.jpg",
 }

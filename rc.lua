@@ -21,6 +21,8 @@ client.connect_signal("request::manage", function(c)
     c.maximized = false
     c.maximized_horizontal = false
     c.maximized_vertical = false
+    -- make floating windows always ontop
+    if c.floating then c.ontop = true end
 end)
 
 ---@diagnostic disable-next-line: param-type-mismatch

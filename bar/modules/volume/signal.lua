@@ -41,7 +41,8 @@ end)
 awful.spawn.easy_async_with_shell(
     "ps x | grep \"pactl subscribe\" | grep -v grep | awk '{print $1}' | xargs kill",
     function()
-        awful.spawn.with_line_callback([[pactl subscribe | grep --line-buffered "Event 'change' on sink #"]], {
+        -- use shell
+        awful.spawn.with_line_callback([[bash -c "pactl subscribe | grep --line-buffered \"Event 'change' on sink #\""]], {
             stdout = function(_) emit_signal() end,
         })
     end

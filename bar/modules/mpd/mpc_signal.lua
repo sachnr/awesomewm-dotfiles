@@ -4,7 +4,7 @@ local gears = require("gears.init")
 
 local cmds = {
     kill = "ps x | grep 'mpc idleloop player' | grep -v grep | awk '{print $1}' | xargs kill",
-    start = "mpc idleloop player",
+    start = 'bash -c "mpc idleloop player"',
     status = "mpc -f 'artist:{%artist%}\ntitle:{%title%}\nfile:{%file%}\nalbum:{%album%}\ntime:{%time%}'",
     music_dir = os.getenv("HOME") .. "/Music/",
     cover_path = "/tmp/.music_cover.png",
@@ -38,11 +38,6 @@ local function emit_status()
             time = stdout:match("time:{(.-)}"),
             status = stdout:match("%[(%a+)%]"),
             volume = stdout:match("volume:(%d+)"),
-            -- progress = stdout:match("#%d+/%d+   (%d+:%d+/%d+:%d+)"),
-            -- repeat_setting = stdout:match("repeat: (%a+)"),
-            -- random = stdout:match("random: (%a+)"),
-            -- single = stdout:match("single: (%a+)"),
-            -- consume = stdout:match("consume: (%a+)"),
         }
         ---@diagnostic disable-next-line: undefined-global
         awesome.emit_signal("mpd::status", t)

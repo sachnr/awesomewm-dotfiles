@@ -39,6 +39,15 @@ local widget = wibox.widget({
     layout = wibox.layout.align.horizontal,
 })
 
+-- delay to reduce no of requests
+local slider_timer = gears.timer({
+    timeout = 0.5,
+    single_shot = true,
+    callback = function() wp.setVolume("sink", widget.slider.value) end,
+})
+-- Connect to `property::value` to use the value on change
+widget.slider:connect_signal("property::value", function() slider_timer:again() end)
+
 helper.hover({ widget = widget.iconbg, newbg = beautiful.module_bg_focused, oldbg = beautiful.module_bg })
 
 helper.hover_hand(widget.slider)

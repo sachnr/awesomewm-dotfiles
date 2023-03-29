@@ -41,7 +41,7 @@ local widget = wibox.widget({
 
 -- delay to reduce no of requests
 local slider_timer = gears.timer({
-    timeout = 0.5,
+    timeout = 0.2,
     single_shot = true,
     callback = function() wp.setVolume("sink", widget.slider.value) end,
 })

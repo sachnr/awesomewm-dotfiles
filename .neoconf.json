@@ -1,0 +1,23 @@
+{
+  "lspconfig": {
+    "lua_ls": {
+      "Lua": {
+        "completion": {
+          "callSnippet": "Replace"
+        },
+        "diagnostic": {
+          "globals": [
+            "awesome",
+            "client",
+            "root"
+          ]
+        },
+        "workspace": {
+          "library": {
+            "/nix/store/zpcbp568bl3jkzbraw4z7aiyj732mni8-awesome-b54e50ad6cfdcd864a21970b31378f7c64adf3f4/share/awesome/lib": true
+          }
+        }
+      }
+    }
+  }
+}

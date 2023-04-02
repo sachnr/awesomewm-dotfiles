@@ -1,0 +1,10 @@
+{
+    "diagnostics.disable": [
+        "different-requires"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "awesome",
+        "client"
+    ]
+}

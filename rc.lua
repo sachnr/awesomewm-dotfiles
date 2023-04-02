@@ -1,0 +1,22 @@
+---@diagnostic disable: different-requires
+local beautiful = require("beautiful")
+local theme = require("theme")
+
+pcall(require, "luarocks.loader")
+beautiful.init(theme)
+require("awful.autofocus")
+require("awful.hotkeys_popup.keys")
+require("keys")
+require("rules")
+require("bar")
+require("notifications")
+require("autostart")
+
+-- Enable sloppy focus, so that focus follows mouse.
+---@diagnostic disable-next-line: undefined-global
+client.connect_signal("mouse::enter", function(c) c:activate({ context = "mouse_enter", raise = false }) end)
+
+---@diagnostic disable-next-line: param-type-mismatch
+collectgarbage("setpause", 110)
+---@diagnostic disable-next-line: param-type-mismatch
+collectgarbage("setstepmul", 1000)

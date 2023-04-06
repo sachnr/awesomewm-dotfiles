@@ -4,6 +4,7 @@ return {
     background3 = "#353535",
     foreground = "#ebdbb2",
     selection = "#504945",
+    border = "#484442",
     black = "#1d2021",
     red = "#cc241d",
     orange = "#e78a4e",

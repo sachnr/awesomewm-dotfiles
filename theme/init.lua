@@ -38,7 +38,7 @@ theme.useless_gap = dpi(4)
 theme.gap_single_client = true
 theme.border_width = dpi(2)
 theme.border_color_normal = pallete.black
-theme.border_color_active = pallete.brightblack
+theme.border_color_active = pallete.border
 theme.border_color_marked = pallete.brightgreen
 
 theme.taglist_bg_empty = theme.module_bg

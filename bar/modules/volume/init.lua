@@ -69,6 +69,13 @@ end)
 awesome.connect_signal("volume::update", function(volume, icon)
     widget.iconbg.icon:set_markup(helper.color_text(icon, pallete.brightblue))
     widget.slider:set_value(volume)
+    if volume > 100 then
+        widget.slider.handle_color = pallete.brightred
+        widget.slider.handle_border_color = pallete.brightred
+    else
+        widget.slider.handle_color = pallete.brightblue
+        widget.slider.handle_border_color = pallete.brightblue
+    end
 end)
 
 local volume_boxed = helper.box_widget({

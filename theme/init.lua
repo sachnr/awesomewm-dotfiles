@@ -73,6 +73,14 @@ theme.menu_bg_normal = pallete.background
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
+theme.notification_bg = pallete.background2
+theme.notification_fg = pallete.foreground
+theme.notification_width = dpi(360)
+theme.notification_margin = dpi(120)
+theme.notification_border_width = dpi(2)
+theme.notification_border_color = pallete.border
+theme.notification_border_shape = helper.rounded_rect(dpi(12))
+theme.notification_icon_size = dpi(100)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]

@@ -39,6 +39,17 @@ local widget = wibox.widget({
     layout = wibox.layout.align.horizontal,
 })
 
+-- gradient pattern
+local vol_gradient = {
+    type = "linear",
+    from = { 0, 0 },
+    to = { 96, 0 },
+    stops = {
+        { 0, pallete.blue },
+        { 1, pallete.red },
+    },
+}
+
 -- delay to reduce no of requests
 local slider_timer = gears.timer({
     timeout = 0.2,
@@ -70,11 +81,9 @@ awesome.connect_signal("volume::update", function(volume, icon)
     widget.iconbg.icon:set_markup(helper.color_text(icon, pallete.brightblue))
     widget.slider:set_value(volume)
     if volume > 100 then
-        widget.slider.handle_color = pallete.brightred
-        widget.slider.handle_border_color = pallete.brightred
+        widget.slider.bar_color = vol_gradient
     else
-        widget.slider.handle_color = pallete.brightblue
-        widget.slider.handle_border_color = pallete.brightblue
+        widget.slider.bar_color = pallete.blue
     end
 end)
 

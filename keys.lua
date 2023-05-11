@@ -4,10 +4,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local modkey = "Mod4"
 local terminal = "kitty"
 
-awful.mouse.append_global_mousebindings({
-    awful.button({}, 3, function() end),
-})
-
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -31,9 +27,13 @@ awful.keyboard.append_global_keybindings({
 
 -- Tags related keybindings
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey, "Shift" }, "Tab", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-
-    awful.key({ modkey }, "Tab", awful.tag.viewnext, { description = "view next", group = "tag" }),
+    awful.key({ modkey }, "Tab", function()
+        local c = awful.client.focus.history.list[2]
+        client.focus = c
+        local t = client.focus and client.focus.first_tag or nil
+        if t then t:view_only() end
+        c:raise()
+    end, { description = "Toggle Between clients", group = "Tag" }),
 })
 
 -- Focus related keybindings

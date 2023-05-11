@@ -60,24 +60,25 @@ for key, value in pairs(icons) do
     local widget = wibox.widget({
         {
             id = "icon",
-            markup = helpers.color_text_icon(value, pallete.foreground, " 16"),
+            font = beautiful.icon_font .. " Bold 10",
+            markup = string.format('<span foreground="%s"> %s </span>', pallete.foreground, value),
             widget = wibox.widget.textbox,
         },
         nil,
         nil,
         forced_height = dpi(40),
-        forced_width = dpi(40),
+        forced_width = dpi(30),
         layout = wibox.layout.align.horizontal,
     })
 
     widget:connect_signal("mouse::enter", function()
-        widget.icon:set_markup(helpers.color_text_icon(value, pallete.brightblue, " 16"))
+        widget.icon:set_markup(string.format('<span foreground="%s"> %s </span>', pallete.brightblue, value))
         ---@diagnostic disable-next-line: undefined-global
         local w = mouse.current_wibox
         if w then w.cursor = "hand1" end
     end)
     widget:connect_signal("mouse::leave", function()
-        widget.icon:set_markup(helpers.color_text_icon(value, pallete.foreground, " 16"))
+        widget.icon:set_markup(string.format('<span foreground="%s"> %s </span>', pallete.foreground, value))
         ---@diagnostic disable-next-line: undefined-global
         local w = mouse.current_wibox
         if w then w.cursor = "left_ptr" end

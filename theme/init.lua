@@ -16,7 +16,7 @@ local helper = require("helper")
 local theme = {}
 
 theme.font = "Roboto"
-theme.font_alt = "RobotoMono Nerd Font"
+theme.font_alt = "Terminess Nerd Font"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
@@ -34,7 +34,7 @@ theme.fg_focus = pallete.foreground
 theme.fg_urgent = pallete.black
 theme.fg_minimize = pallete.black
 
-theme.useless_gap = dpi(4)
+theme.useless_gap = dpi(3)
 theme.gap_single_client = true
 theme.border_width = dpi(2)
 theme.border_color_normal = pallete.black
@@ -44,10 +44,10 @@ theme.border_color_marked = pallete.brightgreen
 theme.taglist_bg_empty = theme.module_bg
 theme.taglist_bg_occupied = theme.module_bg
 theme.taglist_bg_urgent = theme.module_bg
-theme.taglist_bg_focus = pallete.blue
+theme.taglist_bg_focus = pallete.background
 theme.taglist_font = theme.icon_font .. " 11"
 theme.taglist_spacing = dpi(2)
-theme.taglist_fg_focus = pallete.black
+theme.taglist_fg_focus = pallete.brightblue
 theme.taglist_fg_occupied = pallete.foreground
 theme.taglist_fg_urgent = pallete.brightred
 theme.taglist_fg_empty = pallete.brightblack

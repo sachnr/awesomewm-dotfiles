@@ -74,11 +74,11 @@ local tasks = {
 }
 
 local icons = {
-    lock = "  ",
+    lock = "  ",
     sleep = "  ",
-    quit = "  ",
-    restart = "  ",
-    poweroff = " 襤 ",
+    quit = " 󰍃 ",
+    restart = " 󰜉 ",
+    poweroff = " 󰐥 ",
 }
 
 local power_widgets = {}
@@ -174,7 +174,7 @@ local boxed_profile = helpers.box_widget({
     bg_color = pallete.background,
     shape = helpers.rounded_rect(dpi(8)),
     margins = dpi(2),
-    forced_height = dpi(140)
+    forced_height = dpi(140),
 })
 
 return boxed_profile

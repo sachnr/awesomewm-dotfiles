@@ -1,1 +1,2 @@
-return require("theme.gruvbox")
+
+return require("theme.rosepine")

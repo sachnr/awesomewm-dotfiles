@@ -64,7 +64,7 @@ local decorate_cell = function(widget, flag, date)
                 halign = "center",
                 widget = wibox.container.place,
             },
-            margins = (props.padding or 2) + (props.border_width or 0),
+            margins = (props.padding or 0) + (props.border_width or 0),
             widget = wibox.container.margin,
         },
         shape = props.shape,
@@ -78,7 +78,7 @@ local decorate_cell = function(widget, flag, date)
 end
 
 local calendar = wibox.widget({
-    font = beautiful.font,
+    font = beautiful.font_alt.. "Bold 10",
     date = os.date("*t"),
     spacing = dpi(9),
     start_sunday = true,

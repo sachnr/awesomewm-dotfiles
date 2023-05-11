@@ -10,7 +10,7 @@ local widget = wibox.widget({
     {
         id = "text",
         font = beautiful.font_alt .. " Bold 10",
-        markup = helper.color_text("   offline", pallete.brightblue),
+        markup = helper.color_text("   offline   ", pallete.brightblue),
         widget = wibox.widget.textbox,
     },
     nil,

@@ -34,7 +34,7 @@ local redshift = require("bar.modules.redshift")
 
 ---@diagnostic disable-next-line: undefined-global
 screen.connect_signal("request::desktop_decoration", function(s)
-    awful.tag({ " ", " ", " ", " ", " ", " " }, s, awful.layout.layouts[1])
+    awful.tag({ " ", " ", " ", "󰉋 ", "󰵅 ", "󰊠 " }, s, awful.layout.layouts[1])
 
     s.calendar = require("bar.modules.calendar").setup(s)
     s.dashboard = require("bar.modules.button.dashboard").setup(s)

@@ -3,18 +3,18 @@ _G.headphones = false
 
 local function get_icon(isHeadphone, ismuted, volume)
     if ismuted then
-        if isHeadphone then return " 󰟎 " end
-        return "  "
+        if isHeadphone then return " 󰟎  " end
+        return " 󰝟  "
     end
     if isHeadphone then
-        return " 󰋋 "
+        return " 󰋋  "
     else
         if volume < 50 then
-            return "  "
+            return " 󰕿 "
         elseif volume < 100 then
-            return "  "
+            return " 󰖀  "
         else
-            return "  "
+            return " 󰕾  "
         end
     end
 end

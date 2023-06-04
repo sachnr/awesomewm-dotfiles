@@ -16,13 +16,15 @@ local helper = require("helper")
 local theme = {}
 
 theme.font = "Roboto"
-theme.font_alt = "Terminess Nerd Font"
+theme.font_alt = "Roboto Mono Nerd Font"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
 theme.bg_focus = pallete.background2
 theme.bg_urgent = pallete.red
 theme.bg_minimize = pallete.background2
+
+theme.accent = pallete.accent
 
 theme.module_bg = pallete.background
 theme.module_bg_focused = pallete.background2
@@ -35,8 +37,8 @@ theme.fg_urgent = pallete.black
 theme.fg_minimize = pallete.black
 
 theme.useless_gap = dpi(3)
-theme.gap_single_client = true
-theme.border_width = dpi(2)
+theme.gap_single_client = false
+theme.border_width = dpi(1)
 theme.border_color_normal = pallete.black
 theme.border_color_active = pallete.border
 theme.border_color_marked = pallete.brightgreen
@@ -47,14 +49,14 @@ theme.taglist_bg_urgent = theme.module_bg
 theme.taglist_bg_focus = pallete.background
 theme.taglist_font = theme.icon_font .. " 11"
 theme.taglist_spacing = dpi(2)
-theme.taglist_fg_focus = pallete.brightblue
+theme.taglist_fg_focus = theme.accent
 theme.taglist_fg_occupied = pallete.foreground
 theme.taglist_fg_urgent = pallete.brightred
 theme.taglist_fg_empty = pallete.brightblack
 theme.taglist_shape = helper.rounded_rect(dpi(4))
 
 theme.tasklist_bg_normal = theme.module_bg
-theme.tasklist_bg_focus = pallete.blue
+theme.tasklist_bg_focus = theme.accent
 theme.tasklist_bg_urgent = theme.module_bg_focused
 theme.tasklist_fg_urgent = pallete.brightred
 
@@ -64,7 +66,7 @@ theme.menu_width = dpi(100)
 theme.menu_border_color = pallete.brightblack
 theme.menu_border_width = dpi(2)
 theme.menu_fg_focus = pallete.black
-theme.menu_bg_focus = pallete.blue
+theme.menu_bg_focus = theme.accent
 theme.menu_fg_normal = pallete.foreground
 theme.menu_bg_normal = pallete.background
 
@@ -116,9 +118,9 @@ local layouts = {
 }
 
 -- You can use your own layout icons like this:
-theme.layout_tile = gears.color.recolor_image(layouts.layout_tile, pallete.brightblue)
-theme.layout_floating = gears.color.recolor_image(layouts.layout_floating, pallete.brightblue)
-theme.layout_tiletop = gears.color.recolor_image(layouts.layout_tiletop, pallete.brightblue)
+theme.layout_tile = gears.color.recolor_image(layouts.layout_tile, theme.accent)
+theme.layout_floating = gears.color.recolor_image(layouts.layout_floating, theme.accent)
+theme.layout_tiletop = gears.color.recolor_image(layouts.layout_tiletop, theme.accent)
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)

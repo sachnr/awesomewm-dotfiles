@@ -10,7 +10,7 @@ local widget = wibox.widget({
     {
         id = "text",
         font = beautiful.font_alt .. " Bold 10",
-        markup = helper.color_text("   offline   ", pallete.brightblue),
+        markup = helper.color_text("   offline   ", beautiful.accent),
         widget = wibox.widget.textbox,
     },
     nil,
@@ -32,7 +32,7 @@ helper.hover({
 
 ---@diagnostic disable-next-line: undefined-global
 awesome.connect_signal("mpd::status", function(t)
-    setmetatable(t, { __index = { title = "offline" } })
+    setmetatable(t, { __index = { title = "offline", artist = "" } })
     local title
     local status = function()
         if t.status:match("playing") then return true end
@@ -40,19 +40,21 @@ awesome.connect_signal("mpd::status", function(t)
     end
     if status() then
         title = string.format(
-            " <span foreground='%s'></span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
+            " <span foreground='%s'></span>  <span foreground='%s'>%s - %s</span>  <span foreground='%s'></span> ",
             pallete.brightaqua,
             pallete.foreground,
             t.title,
+            t.artist,
             pallete.brightaqua
         )
     else
         title = string.format(
-            " <span foreground='%s'></span>  <span foreground='%s'>%s</span>  <span foreground='%s'></span> ",
-            pallete.brightblue,
+            " <span foreground='%s'></span>  <span foreground='%s'>%s - %s</span>  <span foreground='%s'></span> ",
+            beautiful.accent,
             pallete.foreground,
             t.title,
-            pallete.brightblue
+            t.artist,
+            beautiful.accent
         )
     end
 

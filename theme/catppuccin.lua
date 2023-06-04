@@ -5,6 +5,7 @@
     foreground = "#CDD6F4",
     selection = "#F5E0DC",
     border = "#6c7298",
+    accent = "#89B4FA",
     black = "#191828",
     red = "#F38BA8",
     orange = "#df8e1d",

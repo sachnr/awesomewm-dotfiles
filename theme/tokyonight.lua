@@ -5,6 +5,7 @@ return {
     foreground = "#c0caf5",
     selection = "#33467c",
     border = "#545c7e",
+    accent = "#7aa2f7",
     black = "#15161e",
     red = "#f7768e",
     green = "#9ece6a",

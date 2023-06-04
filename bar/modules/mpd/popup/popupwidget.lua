@@ -72,7 +72,7 @@ for key, value in pairs(icons) do
     })
 
     widget:connect_signal("mouse::enter", function()
-        widget.icon:set_markup(string.format('<span foreground="%s"> %s </span>', pallete.brightblue, value))
+        widget.icon:set_markup(string.format('<span foreground="%s"> %s </span>', beautiful.accent, value))
         ---@diagnostic disable-next-line: undefined-global
         local w = mouse.current_wibox
         if w then w.cursor = "hand1" end
@@ -149,7 +149,7 @@ local widget_boxed = helpers.box_widget({
 
 awesome.connect_signal("mpd::status", function(t)
     setmetatable(t, { __index = { title = "offline", artist = "" } })
-    local artist_name = string.format("<span foreground='%s'> %s </span> ", pallete.brightblue, t.artist)
+    local artist_name = string.format("<span foreground='%s'> %s </span> ", beautiful.accent, t.artist)
     local title = string.format("<span foreground='%s'> %s </span> ", pallete.foreground, t.title)
 
     local status = function()

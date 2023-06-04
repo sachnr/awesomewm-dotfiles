@@ -50,7 +50,7 @@ local update_uptime = function()
     awful.spawn.easy_async_with_shell("uptime | awk '{print $3}' | sed 's/,//;s/:/H /;s/$/M/'", function(stdout)
         local time = string.format(
             '<span foreground="%s" font="%s Bold 9"> %s </span>',
-            pallete.brightblue,
+            beautiful.accent,
             beautiful.font_alt,
             stdout:gsub("%\n", "")
         )
@@ -105,7 +105,7 @@ for key, value in pairs(tasks) do
     })
 
     widget:connect_signal("mouse::enter", function()
-        widget.icon.markup = helpers.color_text_icon(icons[key], pallete.brightblue, " 11")
+        widget.icon.markup = helpers.color_text_icon(icons[key], beautiful.accent, " 11")
         ---@diagnostic disable-next-line: undefined-global
         local w = mouse.current_wibox
         if w then w.cursor = "hand1" end

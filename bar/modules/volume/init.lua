@@ -15,7 +15,7 @@ local widget = wibox.widget({
         widget = wibox.container.background,
         {
             id = "icon",
-            markup = helper.color_text_icon(" 󰕾  ", pallete.brightblue, "10"),
+            markup = helper.color_text_icon(" 󰕾  ", beautiful.accent, "10"),
             widget = wibox.widget.textbox,
         },
     },
@@ -24,9 +24,9 @@ local widget = wibox.widget({
         bar_shape = gears.shape.rounded_rect,
         bar_height = dpi(4),
         bar_color = pallete.blue,
-        handle_color = pallete.brightblue,
+        handle_color = beautiful.accent,
         handle_shape = gears.shape.circle,
-        handle_border_color = pallete.brightblue,
+        handle_border_color = beautiful.accent,
         handle_border_width = dpi(1),
         value = 1,
         maximum = 150,
@@ -45,7 +45,7 @@ local vol_gradient = {
     from = { 0, 0 },
     to = { 96, 0 },
     stops = {
-        { 0, pallete.blue },
+        { 0, pallete.brightblack },
         { 1, pallete.red },
     },
 }
@@ -78,12 +78,12 @@ widget.slider:connect_signal("button::press", function(_, _, _, button)
 end)
 
 awesome.connect_signal("volume::update", function(volume, icon)
-    widget.iconbg.icon:set_markup(helper.color_text_icon(icon, pallete.brightblue, "10"))
+    widget.iconbg.icon:set_markup(helper.color_text_icon(icon, beautiful.accent, "10"))
     widget.slider:set_value(volume)
     if volume > 100 then
         widget.slider.bar_color = vol_gradient
     else
-        widget.slider.bar_color = pallete.blue
+        widget.slider.bar_color = pallete.brightblack
     end
 end)
 

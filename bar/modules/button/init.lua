@@ -8,7 +8,7 @@ local dpi = beautiful.xresources.apply_dpi
 local widget = wibox.widget({
     {
         id = "icon",
-        markup = helper.color_text_icon(" ", pallete.brightblue, "11"),
+        markup = helper.color_text_icon(" ", beautiful.accent, "11"),
         widget = wibox.widget.textbox,
     },
     nil,

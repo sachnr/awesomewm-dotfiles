@@ -6,9 +6,9 @@ local helper = require("helper")
 
 local time = wibox.widget.textclock(
     string.format(
-        "<span font='%s 12' color='%s'>   </span><span font='%s bold 10' color='%s'>%%I:%%M %%p </span>",
+        "<span font='%s 10' color='%s'>   </span><span font='%s bold 10' color='%s'>%%I:%%M %%p </span>",
         beautiful.icon_font,
-        pallete.brightblue,
+        beautiful.accent,
         beautiful.font_alt,
         pallete.foreground
     )

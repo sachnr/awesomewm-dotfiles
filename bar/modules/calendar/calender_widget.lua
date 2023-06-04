@@ -22,7 +22,7 @@ styles.normal = {
 }
 
 styles.focus = {
-    fg_color = pallete.brightblue,
+    fg_color = beautiful.accent,
     bg_color = pallete.background,
     markup = function(t) return "<b>" .. t .. "</b>" end,
     shape = helpers.rounded_rect(dpi(6)),
@@ -30,14 +30,14 @@ styles.focus = {
 }
 
 styles.header = {
-    fg_color = pallete.brightblue,
+    fg_color = beautiful.accent,
     bg_color = pallete.background1,
     shape = helpers.rounded_rect(dpi(6)),
     markup = function(t) return "<b>" .. t .. "</b>" end,
 }
 
 styles.weekday = {
-    fg_color = pallete.brightblue,
+    fg_color = beautiful.accent,
     bg_color = pallete.background,
     shape = helpers.rounded_rect(dpi(4)),
     markup = function(t) return "<b>" .. t .. "</b>" end,
@@ -78,7 +78,7 @@ local decorate_cell = function(widget, flag, date)
 end
 
 local calendar = wibox.widget({
-    font = beautiful.font_alt.. "Bold 10",
+    font = beautiful.font_alt .. "Bold 10",
     date = os.date("*t"),
     spacing = dpi(9),
     start_sunday = true,
@@ -91,7 +91,7 @@ local current_month = calendar:get_date().month
 
 local update_focus_bg = function(month)
     if current_month == month then
-        styles.focus.fg_color = pallete.brightblue
+        styles.focus.fg_color = beautiful.accent
         styles.focus.markup = function(t) return "<b>" .. t .. "</b>" end
     else
         styles.focus.bg_color = "#00000000"

@@ -23,6 +23,7 @@ local volume = require("bar.modules.volume")
 local layout = require("bar.modules.layoutbox")
 local date = require("bar.modules.date")
 local time = require("bar.modules.time")
+local datetime = require("bar.modules.datetime")
 local systray = require("bar.modules.systray")
 local taglist = require("bar.modules.taglist")
 local tasklist = require("bar.modules.tasklist")
@@ -58,7 +59,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        height = dpi(32),
+        height = dpi(34),
         widget = {
             layout = wibox.layout.align.horizontal,
             expand = "none",
@@ -77,8 +78,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 systray,
                 redshift,
                 volume,
-                date,
                 time,
+                date,
                 button,
             },
         },

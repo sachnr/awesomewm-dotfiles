@@ -30,7 +30,7 @@ local tasklist = require("bar.modules.tasklist")
 local button = require("bar.modules.button")
 local mpd = require("bar.modules.mpd")
 local redshift = require("bar.modules.redshift")
-local network_speed = require("bar.modules.net_speed_widget")
+-- local network_speed = require("bar.modules.net_speed_widget").default()
 
 --      ────────────────────────────────────────────────────────────
 
@@ -60,7 +60,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        height = dpi(34),
+        height = dpi(30),
         widget = {
             layout = wibox.layout.align.horizontal,
             expand = "none",
@@ -69,6 +69,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 layout(s),
                 taglist(s),
                 tasklist(s),
+                -- network_speed,
             },
             { -- Middle widget
                 layout = wibox.layout.flex.horizontal,
@@ -76,7 +77,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
             },
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-                network_speed,
                 systray,
                 redshift,
                 volume,

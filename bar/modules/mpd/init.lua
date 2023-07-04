@@ -34,11 +34,7 @@ helper.hover({
 awesome.connect_signal("mpd::status", function(t)
     setmetatable(t, { __index = { title = "offline", artist = "" } })
     local title
-    local status = function()
-        if t.status:match("playing") then return true end
-        return false
-    end
-    if status() then
+    if t.status:match("playing") then
         title = string.format(
             " <span foreground='%s'></span>  <span foreground='%s'>%s - %s</span>  <span foreground='%s'></span> ",
             pallete.brightaqua,

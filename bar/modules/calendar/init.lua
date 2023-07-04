@@ -10,6 +10,10 @@ local cal_widget = helpers.box_widget({
     shape = helpers.rounded_rect(dpi(8)),
     margin = dpi(6),
 })
+local network_speed = require("bar.modules.net_speed_widget").setup({
+    forced_height = dpi(30),
+    horizontal_padding = 0
+})
 
 local M = {}
 
@@ -32,6 +36,7 @@ M.setup = function(s)
                 {
                     -- widget goes here
                     cal_widget,
+                    network_speed,
                     spacing = dpi(20),
                     layout = wibox.layout.fixed.vertical,
                     widget = wibox.container.margin,

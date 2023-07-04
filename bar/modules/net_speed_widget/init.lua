@@ -117,16 +117,45 @@ awful.widget.watch(
     widget
 )
 
-local widget_boxed = helper.box_widget({
-    widget = widget,
-    bg_color = beautiful.module_bg,
-    margins = dpi(6),
-})
+local M = {}
 
-helper.hover({
-    widget = widget_boxed:get_children_by_id("box_container")[1],
-    oldbg = beautiful.module_bg,
-    newbg = beautiful.module_bg_focused,
-})
+M.default = function()
+    local widget_boxed = helper.box_widget({
+        widget = widget,
+        bg_color = beautiful.module_bg,
+        margins = dpi(6),
+    })
 
-return widget_boxed
+    helper.hover({
+        widget = widget_boxed:get_children_by_id("box_container")[1],
+        oldbg = beautiful.module_bg,
+        newbg = beautiful.module_bg_focused,
+    })
+
+    return widget_boxed
+end
+
+--- box a widget
+---@param args {bg_color: string, forced_width: number, forced_height: number, shape: function, margins: number, horizontal_padding: number}
+---@return table
+M.setup = function(args)
+    local widget_boxed = helper.box_widget({
+        widget = widget,
+        bg_color = args.bg_color or beautiful.module_bg,
+        margins = args.margins or dpi(6),
+        forced_height = args.forced_height or nil,
+        forced_width = args.forced_width or nil,
+        horizontal_padding = args.horizontal_padding or dpi(6),
+        shape = args.shape or helper.rounded_rect(dpi(4)),
+    })
+
+    helper.hover({
+        widget = widget_boxed:get_children_by_id("box_container")[1],
+        oldbg = beautiful.module_bg,
+        newbg = beautiful.module_bg_focused,
+    })
+
+    return widget_boxed
+end
+
+return M

@@ -180,54 +180,56 @@ awful.keyboard.append_global_keybindings({
 })
 
 -- Some Function Keys
-awful.key(
-    {},
-    "XF86MonBrightnessUp",
-    function() awful.spawn("brightnessctl set +10", false) end,
-    { description = "increase brightness by 10%", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86MonBrightnessDown",
-    function() awful.spawn("brightnessctl set -10", false) end,
-    { description = "decrease brightness by 10%", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioLowerVolume",
-    function() require("bar.modules.volume.wireplumber").decVol(5) end,
-    { description = "volume down", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioRaiseVolume",
-    function() require("bar.modules.volume.wireplumber").incVol(5) end,
-    { description = "volume up", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioMute",
-    function() awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", false) end,
-    { description = "toggle mute", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioNext",
-    function() awful.spawn("mpc next", false) end,
-    { description = "next music", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioPrev",
-    function() awful.spawn("mpc prev", false) end,
-    { description = "previous music", group = "hotkeys" }
-)
-awful.key(
-    {},
-    "XF86AudioPlay",
-    function() awful.spawn("mpc toggle", false) end,
-    { description = "play/pause music", group = "hotkeys" }
-)
+awful.keyboard.append_global_keybindings({
+    awful.key(
+        {},
+        "XF86MonBrightnessUp",
+        function() awful.spawn("brightnessctl set +10", false) end,
+        { description = "increase brightness by 10%", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86MonBrightnessDown",
+        function() awful.spawn("brightnessctl set -10", false) end,
+        { description = "decrease brightness by 10%", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioLowerVolume",
+        function() require("bar.modules.volume.wireplumber").decVol(5) end,
+        { description = "volume down", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioRaiseVolume",
+        function() require("bar.modules.volume.wireplumber").incVol(5) end,
+        { description = "volume up", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioMute",
+        function() awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", false) end,
+        { description = "toggle mute", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioNext",
+        function() awful.spawn("mpc next", false) end,
+        { description = "next music", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioPrev",
+        function() awful.spawn("mpc prev", false) end,
+        { description = "previous music", group = "hotkeys" }
+    ),
+    awful.key(
+        {},
+        "XF86AudioPlay",
+        function() awful.spawn("mpc toggle", false) end,
+        { description = "play/pause music", group = "hotkeys" }
+    ),
+})
 
 --      ────────────────────────────────────────────────────────────
 

@@ -1,2 +1,1 @@
-
-return require("theme.rosepine")
+return require("theme.everforest")

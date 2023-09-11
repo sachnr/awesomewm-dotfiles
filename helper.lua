@@ -1,5 +1,5 @@
 -- common functions that will be used multiple times
---
+
 local M = {}
 local gears = require("gears")
 local wibox = require("wibox")
@@ -127,7 +127,7 @@ M.box_widget = function(t)
             id = "box_container",
             widget = box_container,
         },
-        margins = t.margins or dpi(2),
+        margins = t.margins,
         color = "#00000000",
         widget = wibox.container.margin,
     })

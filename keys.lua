@@ -2,7 +2,7 @@ local awful = require("awful.init")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local modkey = "Mod4"
-local terminal = "kitty"
+local terminal = "wezterm"
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
@@ -249,6 +249,8 @@ client.connect_signal("request::default_keybindings", function()
         end, { description = "toggle fullscreen", group = "client" }),
 
         awful.key({ modkey }, "q", function(c) c:kill() end, { description = "close", group = "client" }),
+
+        awful.key({ modkey }, "F2", function(c) awful.spawn.easy_async_with_shell("i3lock-script") end, { description = "close", group = "client" }),
 
         awful.key({ modkey }, "t", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),
 

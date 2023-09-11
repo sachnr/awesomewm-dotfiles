@@ -12,8 +12,9 @@ require("bar")
 require("notifications")
 require("autostart")
 
+require("awful").screen.set_auto_dpi_enabled(true)
+
 -- Enable sloppy focus, so that focus follows mouse.
----@diagnostic disable-next-line: undefined-global
 client.connect_signal("mouse::enter", function(c) c:activate({ context = "mouse_enter", raise = false }) end)
 
 -- dont maximize client automatically

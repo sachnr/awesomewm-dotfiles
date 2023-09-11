@@ -30,7 +30,7 @@ local cover_art = wibox.widget({
             widget = wibox.widget.imagebox,
         },
         border_width = dpi(1),
-        border_color = pallete.brightblack,
+        border_color = pallete.border,
         shape = helpers.rounded_rect(dpi(8)),
         widget = wibox.container.background,
     },
@@ -86,7 +86,7 @@ for key, value in pairs(icons) do
 
     music_controls[key] = helpers.box_widget({
         widget = widget,
-        bg_color = pallete.background,
+        bg_color = beautiful.module_bg,
         margins = dpi(2),
         shape = gears.shape.circle,
         horizontal_padding = dpi(0),
@@ -141,7 +141,7 @@ local widget = wibox.widget({
 
 local widget_boxed = helpers.box_widget({
     widget = widget,
-    bg_color = pallete.background,
+    bg_color = beautiful.module_bg,
     shape = helpers.rounded_rect(dpi(8)),
     margin = dpi(6),
     horizontal_padding = dpi(0),

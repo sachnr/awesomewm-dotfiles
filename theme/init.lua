@@ -20,14 +20,14 @@ theme.font_alt = "Roboto Mono Nerd Font"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
-theme.bg_focus = pallete.background2
+theme.bg_focus = pallete.background3
 theme.bg_urgent = pallete.red
 theme.bg_minimize = pallete.background2
 
 theme.accent = pallete.accent
 
-theme.module_bg = pallete.background
-theme.module_bg_focused = pallete.background2
+theme.module_bg = pallete.background2
+theme.module_bg_focused = pallete.background3
 
 theme.bg_systray = theme.module_bg
 
@@ -36,9 +36,9 @@ theme.fg_focus = pallete.foreground
 theme.fg_urgent = pallete.black
 theme.fg_minimize = pallete.black
 
-theme.useless_gap = dpi(3)
-theme.gap_single_client = false
-theme.border_width = dpi(1)
+theme.useless_gap = dpi(2)
+theme.gap_single_client = true
+theme.border_width = dpi(2)
 theme.border_color_normal = pallete.black
 theme.border_color_active = pallete.border
 theme.border_color_marked = pallete.brightgreen
@@ -46,7 +46,7 @@ theme.border_color_marked = pallete.brightgreen
 theme.taglist_bg_empty = theme.module_bg
 theme.taglist_bg_occupied = theme.module_bg
 theme.taglist_bg_urgent = theme.module_bg
-theme.taglist_bg_focus = pallete.background
+theme.taglist_bg_focus = pallete.module_bg_focused
 theme.taglist_font = theme.icon_font .. " 11"
 theme.taglist_spacing = dpi(2)
 theme.taglist_fg_focus = theme.accent

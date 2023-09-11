@@ -17,7 +17,7 @@ local user_image = wibox.widget({
             widget = wibox.widget.imagebox,
         },
         border_width = dpi(2),
-        border_color = pallete.brightblack,
+        border_color = pallete.border,
         shape = gears.shape.circle,
         widget = wibox.container.background,
     },
@@ -171,7 +171,7 @@ local profile = wibox.widget({
 
 local boxed_profile = helpers.box_widget({
     widget = profile,
-    bg_color = pallete.background,
+    bg_color = beautiful.module_bg,
     shape = helpers.rounded_rect(dpi(8)),
     margins = dpi(2),
     forced_height = dpi(140),

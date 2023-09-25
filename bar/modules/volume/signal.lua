@@ -29,7 +29,7 @@ local function emit_signal()
     end)
 end
 
-awful.spawn.easy_async_with_shell("pactl list sinks |& grep -E 'Active Port: analog'", function(stdout)
+awful.spawn.easy_async_with_shell("pactl list sinks | rg -e analog-output- | awk '/Active Port:/{print $3}'", function(stdout)
     if stdout:match("lineout") then
         _G.headphones = false
     else

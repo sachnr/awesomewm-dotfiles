@@ -1,16 +1,16 @@
-local wp = require("bar.modules.volume.wireplumber")
+local wp = require("bar.modules.pipewire.wireplumber")
 local wibox = require("wibox.init")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local helper = require("helper")
 local pallete = require("theme.pallete")
 local dpi = beautiful.xresources.apply_dpi
-require("bar.modules.volume.signal")
+require("bar.modules.pipewire.signal")
 
 local widget = wibox.widget({
     {
         id = "iconbg",
-        bg = beautiful.pallete_bg,
+        bg = beautiful.module_bg,
         shape = gears.shape.circle,
         widget = wibox.container.background,
         {
@@ -65,10 +65,6 @@ helper.hover_hand(widget.slider)
 
 widget.iconbg:connect_signal("button::press", function(_, _, _, button)
     if button == 1 then wp.setMute("sink") end
-    if button == 3 then
-        wp.toggleSink(_G.headphones)
-        _G.headphones = not _G.headphones
-    end
 end)
 
 -- Connect to `property::value` to use the value on change

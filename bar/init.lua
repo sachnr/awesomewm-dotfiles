@@ -19,7 +19,6 @@ tag.connect_signal(
 
 --      ────────────────────────────────────────────────────────────
 
-local volume = require("bar.modules.volume")
 local layout = require("bar.modules.layoutbox")
 local date = require("bar.modules.date")
 local time = require("bar.modules.time")
@@ -30,6 +29,8 @@ local tasklist = require("bar.modules.tasklist")
 local button = require("bar.modules.button")
 local mpd = require("bar.modules.mpd")
 local redshift = require("bar.modules.redshift")
+local pulseaudio = require("bar.modules.pulseaudio")
+-- local pipewire = require("bar.modules.pipewire")
 -- local network_speed = require("bar.modules.net_speed_widget").default()
 
 --      ────────────────────────────────────────────────────────────
@@ -41,21 +42,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.calendar = require("bar.modules.calendar").setup(s)
     s.dashboard = require("bar.modules.button.dashboard").setup(s)
     s.music_panel = require("bar.modules.mpd.popup").setup(s)
-
-    awful.wallpaper({
-        screen = s,
-        widget = {
-            {
-                image = beautiful.wallpaper,
-                resize = true,
-                widget = wibox.widget.imagebox,
-            },
-            valign = "center",
-            halign = "center",
-            tiled = false,
-            widget = wibox.container.tile,
-        },
-    })
 
     s.mywibox = awful.wibar({
         position = "top",
@@ -79,7 +65,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 layout = wibox.layout.fixed.horizontal,
                 systray,
                 redshift,
-                volume,
+                pulseaudio,
+                -- pipewire,
                 time,
                 date,
                 button,
@@ -87,3 +74,43 @@ screen.connect_signal("request::desktop_decoration", function(s)
         },
     })
 end)
+
+local gears = require("gears")
+
+---@diagnostic disable-next-line: undefined-global
+screen.connect_signal(
+    "request::wallpaper",
+    function(s)
+        awful.wallpaper({
+            screen = s,
+            bg = "#000000",
+            widget = {
+                {
+                    image = gears.filesystem.get_random_file_from_dir(
+                        "/home/sachnr/wallpapers/home",
+                        { ".jpg", ".png", ".svg" },
+                        true
+                    ),
+                    resize = true,
+                    widget = wibox.widget.imagebox,
+                },
+                valign = "center",
+                halign = "center",
+                tiled = false,
+                widget = wibox.container.tile,
+            },
+        })
+    end
+)
+
+-- **Somewhere else** in the code, **not** in the request::wallpaper handler.
+gears.timer({
+    timeout = 300,
+    autostart = true,
+    callback = function()
+        ---@diagnostic disable-next-line: undefined-global
+        for s in screen do
+            s:emit_signal("request::wallpaper")
+        end
+    end,
+})

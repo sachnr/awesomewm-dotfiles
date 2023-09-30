@@ -17,14 +17,4 @@ M.incVol = function(percentage) awful.spawn(string.format("wpctl set-volume @DEF
 
 M.decVol = function(percentage) awful.spawn(string.format("wpctl set-volume @DEFAULT_AUDIO_SINK@ %s%%-", percentage)) end
 
---- toggle sink output profile
----@param headphone boolean
-M.toggleSink = function(headphone)
-    if headphone then
-        awful.spawn("pactl set-sink-port 0 analog-output-lineout")
-    else
-        awful.spawn("pactl set-sink-port 0 analog-output-headphones")
-    end
-end
-
 return M

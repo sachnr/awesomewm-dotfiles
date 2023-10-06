@@ -1,4 +1,5 @@
 local wp = require("bar.modules.pipewire.wireplumber")
+local awful = require("awful")
 local wibox = require("wibox.init")
 local gears = require("gears")
 local beautiful = require("beautiful")
@@ -65,6 +66,7 @@ helper.hover_hand(widget.slider)
 
 widget.iconbg:connect_signal("button::press", function(_, _, _, button)
     if button == 1 then wp.setMute("sink") end
+    if button == 3 then awful.spawn.easy_async("pavucontrol") end
 end)
 
 -- Connect to `property::value` to use the value on change

@@ -1,9 +1,8 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local helper = require("helper")
 local awful = require("awful")
-local pallete = require("theme.pallete")
+local gears = require("gears")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 ---@diagnostic disable-next-line: undefined-global
@@ -22,15 +21,15 @@ tag.connect_signal(
 local layout = require("bar.modules.layoutbox")
 local date = require("bar.modules.date")
 local time = require("bar.modules.time")
-local datetime = require("bar.modules.datetime")
+-- local datetime = require("bar.modules.datetime")
 local systray = require("bar.modules.systray")
 local taglist = require("bar.modules.taglist")
 local tasklist = require("bar.modules.tasklist")
 local button = require("bar.modules.button")
 local mpd = require("bar.modules.mpd")
 local redshift = require("bar.modules.redshift")
-local pulseaudio = require("bar.modules.pulseaudio")
--- local pipewire = require("bar.modules.pipewire")
+-- local pulseaudio = require("bar.modules.pulseaudio")
+local pipewire = require("bar.modules.pipewire")
 -- local network_speed = require("bar.modules.net_speed_widget").default()
 
 --      ────────────────────────────────────────────────────────────
@@ -65,8 +64,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 layout = wibox.layout.fixed.horizontal,
                 systray,
                 redshift,
-                pulseaudio,
-                -- pipewire,
+                -- pulseaudio,
+                pipewire,
                 time,
                 date,
                 button,
@@ -75,8 +74,28 @@ screen.connect_signal("request::desktop_decoration", function(s)
     })
 end)
 
-local gears = require("gears")
+-- ---@diagnostic disable-next-line: undefined-global
+-- screen.connect_signal(
+--     "request::wallpaper",
+--     function(s)
+--         awful.wallpaper({
+--             screen = s,
+--             widget = {
+--                 {
+--                     image = beautiful.wallpaper,
+--                     resize = true,
+--                     widget = wibox.widget.imagebox,
+--                 },
+--                 valign = "center",
+--                 halign = "center",
+--                 tiled = false,
+--                 widget = wibox.container.tile,
+--             },
+--         })
+--     end
+-- )
 
+-- Slideshow
 ---@diagnostic disable-next-line: undefined-global
 screen.connect_signal(
     "request::wallpaper",

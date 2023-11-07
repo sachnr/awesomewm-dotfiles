@@ -1,1 +1,1 @@
-return require("theme.everforest")
+return require("theme.colorschemes.solarised")

@@ -16,7 +16,7 @@ local helper = require("helper")
 local theme = {}
 
 theme.font = "Roboto"
-theme.font_alt = "Roboto Mono Nerd Font"
+theme.font_alt = "Roboto Mono"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
@@ -38,7 +38,7 @@ theme.fg_minimize = pallete.black
 
 theme.useless_gap = dpi(2)
 theme.gap_single_client = true
-theme.border_width = dpi(2)
+theme.border_width = dpi(3)
 theme.border_color_normal = pallete.black
 theme.border_color_active = pallete.border
 theme.border_color_marked = pallete.brightgreen

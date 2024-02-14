@@ -8,22 +8,31 @@ require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("keys")
 require("rules")
-require("bar")
 require("notifications")
 require("autostart")
+require("wallpaper")
+
+-- vertical or horizontal
+require("bar").setup({
+	style = "vertical",
+})
 
 require("awful").screen.set_auto_dpi_enabled(true)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c) c:activate({ context = "mouse_enter", raise = false }) end)
+client.connect_signal("mouse::enter", function(c)
+	c:activate({ context = "mouse_enter", raise = false })
+end)
 
--- dont maximize client automatically
+-- dont maximize clients automatically on open
 client.connect_signal("request::manage", function(c)
-    c.maximized = false
-    c.maximized_horizontal = false
-    c.maximized_vertical = false
-    -- make floating windows always ontop
-    if c.floating then c.ontop = true end
+	c.maximized = false
+	c.maximized_horizontal = false
+	c.maximized_vertical = false
+	-- make floating windows always ontop
+	if c.floating then
+		c.ontop = true
+	end
 end)
 
 ---@diagnostic disable-next-line: param-type-mismatch

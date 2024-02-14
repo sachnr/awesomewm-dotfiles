@@ -16,7 +16,7 @@ local helper = require("helper")
 local theme = {}
 
 theme.font = "Roboto"
-theme.font_alt = "Roboto Mono"
+theme.font_alt = "Roboto"
 theme.icon_font = "Symbols Mono Nerd Font"
 
 theme.bg_normal = pallete.black
@@ -26,7 +26,7 @@ theme.bg_minimize = pallete.background2
 
 theme.accent = pallete.accent
 
-theme.module_bg = pallete.background2
+theme.module_bg = pallete.background
 theme.module_bg_focused = pallete.background3
 
 theme.bg_systray = theme.module_bg
@@ -36,9 +36,9 @@ theme.fg_focus = pallete.foreground
 theme.fg_urgent = pallete.black
 theme.fg_minimize = pallete.black
 
-theme.useless_gap = dpi(2)
+theme.useless_gap = dpi(1)
 theme.gap_single_client = true
-theme.border_width = dpi(3)
+theme.border_width = dpi(2)
 theme.border_color_normal = pallete.black
 theme.border_color_active = pallete.border
 theme.border_color_marked = pallete.brightgreen
@@ -48,7 +48,6 @@ theme.taglist_bg_occupied = theme.module_bg
 theme.taglist_bg_urgent = theme.module_bg
 theme.taglist_bg_focus = pallete.module_bg_focused
 theme.taglist_font = theme.icon_font .. " 11"
-theme.taglist_spacing = dpi(2)
 theme.taglist_fg_focus = theme.accent
 theme.taglist_fg_occupied = pallete.foreground
 theme.taglist_fg_urgent = pallete.brightred
@@ -94,27 +93,26 @@ theme.notification_icon_size = dpi(100)
 --theme.bg_widget = "#cc0000"
 
 ---@diagnostic disable-next-line: param-type-mismatch
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. pallete.wallpaper)
 theme.pfp = gfs.get_configuration_dir() .. "assets/pfp.gif"
 theme.cover_art = gfs.get_configuration_dir() .. "assets/albumart.jpg"
 
 local layouts = {
-    layout_fairh = themes_path .. "default/layouts/fairhw.png",
-    layout_fairv = themes_path .. "default/layouts/fairvw.png",
-    layout_floating = themes_path .. "default/layouts/floatingw.png",
-    layout_magnifier = themes_path .. "default/layouts/magnifierw.png",
-    layout_max = themes_path .. "default/layouts/maxw.png",
-    layout_fullscreen = themes_path .. "default/layouts/fullscreenw.png",
-    layout_tilebottom = themes_path .. "default/layouts/tilebottomw.png",
-    layout_tileleft = themes_path .. "default/layouts/tileleftw.png",
-    layout_tile = themes_path .. "default/layouts/tilew.png",
-    layout_tiletop = themes_path .. "default/layouts/tiletopw.png",
-    layout_spiral = themes_path .. "default/layouts/spiralw.png",
-    layout_dwindle = themes_path .. "default/layouts/dwindlew.png",
-    layout_cornernw = themes_path .. "default/layouts/cornernww.png",
-    layout_cornerne = themes_path .. "default/layouts/cornernew.png",
-    layout_cornersw = themes_path .. "default/layouts/cornersww.png",
-    layout_cornerse = themes_path .. "default/layouts/cornersew.png",
+	layout_fairh = themes_path .. "default/layouts/fairhw.png",
+	layout_fairv = themes_path .. "default/layouts/fairvw.png",
+	layout_floating = themes_path .. "default/layouts/floatingw.png",
+	layout_magnifier = themes_path .. "default/layouts/magnifierw.png",
+	layout_max = themes_path .. "default/layouts/maxw.png",
+	layout_fullscreen = themes_path .. "default/layouts/fullscreenw.png",
+	layout_tilebottom = themes_path .. "default/layouts/tilebottomw.png",
+	layout_tileleft = themes_path .. "default/layouts/tileleftw.png",
+	layout_tile = themes_path .. "default/layouts/tilew.png",
+	layout_tiletop = themes_path .. "default/layouts/tiletopw.png",
+	layout_spiral = themes_path .. "default/layouts/spiralw.png",
+	layout_dwindle = themes_path .. "default/layouts/dwindlew.png",
+	layout_cornernw = themes_path .. "default/layouts/cornernww.png",
+	layout_cornerne = themes_path .. "default/layouts/cornernew.png",
+	layout_cornersw = themes_path .. "default/layouts/cornersww.png",
+	layout_cornerse = themes_path .. "default/layouts/cornersew.png",
 }
 
 -- You can use your own layout icons like this:
@@ -130,14 +128,11 @@ theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus
 theme.icon_theme = "Papirus-Dark"
 
 -- Set different colors for urgent notifications.
-rnotification.connect_signal(
-    "request::rules",
-    function()
-        rnotification.append_rule({
-            rule = { urgency = "critical" },
-            properties = { bg = pallete.red, fg = pallete.black },
-        })
-    end
-)
+rnotification.connect_signal("request::rules", function()
+	rnotification.append_rule({
+		rule = { urgency = "critical" },
+		properties = { bg = pallete.red, fg = pallete.black },
+	})
+end)
 
 return theme

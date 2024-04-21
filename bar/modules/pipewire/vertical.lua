@@ -61,7 +61,6 @@ awesome.connect_signal("volume::update", function(volume, icon)
 	local markup =
 		string.format("<span font='%s bold 10' color='%s'> %s </span>", beautiful.font_alt, pallete.foreground, volume)
 	widget.text:set_markup(markup)
-	wp.setVolume("sink", volume)
 end)
 
 local volume_boxed = helper.box_widget({

@@ -2,7 +2,7 @@ local awful = require("awful.init")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local modkey = "Mod4"
-local terminal = "kitty"
+local terminal = "alacritty"
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({

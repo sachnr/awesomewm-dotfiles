@@ -14,7 +14,7 @@ require("wallpaper")
 
 -- vertical or horizontal
 require("bar").setup({
-	style = "vertical",
+	style = "horizontal",
 })
 
 require("awful").screen.set_auto_dpi_enabled(true)

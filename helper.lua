@@ -1,55 +1,12 @@
--- common functions that will be used multiple times
-
-local M = {}
-local gears = require("gears")
-local wibox = require("wibox")
 local awful = require("awful")
+local wibox = require("wibox")
+local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
---- shape property for widgets
----@param radius integer border radius
-M.rounded_rect = function(radius)
-	return function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, radius)
-	end
-end
---- set fg color
----@param text string
----@param color string
----@return string
-M.color_text = function(text, color)
-	return string.format("<span foreground='%s'>%s</span>", color, text)
-end
-
---- same as color_text but with a different font
----@param text string
----@param color string
----@param size string
----@return string
-M.color_text_icon = function(text, color, size)
-	return string.format("<span foreground='%s' font='%s %s'>%s</span>", color, beautiful.icon_font, size, text)
-end
-
---- vertical padding
----@param height integer height
----@return table
-M.padding_v = function(height)
-	return wibox.widget({
-		forced_height = height,
-		layout = wibox.layout.fixed.vertical,
-	})
-end
-
---- horizontal padding
----@param width integer width
----@return table
-M.padding_h = function(width)
-	return wibox.widget({
-		forced_width = width,
-		layout = wibox.layout.fixed.vertical,
-	})
-end
+local M = {}
+local helpers = {}
+helpers.map_table = {}
 
 --- adds hover properties to a background container
 --- to add hover to box_widget use 'widget:get_children_by_id("box_container")\[1\]' as widget name
@@ -98,53 +55,49 @@ M.hover_hand = function(widget)
 	end)
 end
 
---- box a widget
----@param t {widget: table, bg_color: string, forced_width: number, forced_height: number, shape: function, margins: number, horizontal_padding: number}
----@return table
-M.box_widget = function(t)
-	setmetatable(t, {
-		__index = {
-			bg_color = "#000000",
-			forced_height = nil,
-			forced_width = nil,
-			shape = M.rounded_rect(dpi(4)),
-			margins = (dpi(2)),
-			horizontal_padding = dpi(6),
-		},
-	})
-	local box_container = wibox.container.background()
-	box_container.bg = t.bg_color
-	box_container.forced_height = t.forced_height
-	box_container.forced_width = t.forced_width
-	box_container.shape = t.shape
-	local boxed_widget = wibox.widget({
-		-- Add margins
-		{
-			-- Add background color
-			{
-				-- Center widget_to_be_boxed vertically
-				nil,
-				{
-					-- Center widget_to_be_boxed horizontally
-					M.padding_h(t.horizontal_padding),
-					-- The actual widget goes here
-					t.widget,
-					M.padding_h(t.horizontal_padding),
-					layout = wibox.layout.align.horizontal,
-					expand = "none",
-				},
-				layout = wibox.layout.align.vertical,
-				expand = "none",
-			},
-			id = "box_container",
-			widget = box_container,
-		},
-		margins = t.margins,
-		color = "#00000000",
-		widget = wibox.container.margin,
-	})
+M.create_rounded_widget = function(widget, amount)
+	local container = wibox.container.background()
+	container.bg = beautiful.module_bg
+	container.shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, amount)
+	end
+	container.id = "container"
 
-	return boxed_widget
+	container.widget = widget
+
+	-- lrtb
+	return wibox.container.margin(container, dpi(8), dpi(8), dpi(4), dpi(4))
+end
+
+M.set_map = function(element, value)
+	helpers.map_table[element] = value
+end
+
+M.get_map = function(element)
+	return helpers.map_table[element]
+end
+
+M.async = function(cmd, callback)
+	return awful.spawn.easy_async(cmd, function(stdout, _, _, exit_code)
+		callback(stdout, exit_code)
+	end)
+end
+
+M.newtimer = function(name, timeout, fun, nostart, stoppable)
+	if not name or #name == 0 then
+		return
+	end
+	local key = stoppable and name or timeout
+	helpers.timer_table = helpers.timer_table or {}
+	if not helpers.timer_table[key] then
+		helpers.timer_table[key] = gears.timer({ timeout = timeout })
+		helpers.timer_table[key]:start()
+	end
+	helpers.timer_table[key]:connect_signal("timeout", fun)
+	if not nostart then
+		helpers.timer_table[key]:emit_signal("timeout")
+	end
+	return stoppable and helpers.timer_table[key]
 end
 
 return M

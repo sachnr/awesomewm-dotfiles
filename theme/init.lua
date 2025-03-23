@@ -10,77 +10,82 @@ local gears = require("gears")
 
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
-local pallete = require("theme.pallete")
-local helper = require("helper")
+local pallete = require("theme.gtk")
 
 local theme = {}
 
-theme.font = "Roboto"
-theme.font_alt = "Roboto"
-theme.icon_font = "Symbols Mono Nerd Font"
+theme.font = pallete.font_family
+theme.font_alt = pallete.font_family
+theme.font_size = pallete.font_size
+theme.icon_font = "Symbols Nerd Font Mono"
 
-theme.bg_normal = pallete.black
-theme.bg_focus = pallete.background3
-theme.bg_urgent = pallete.red
-theme.bg_minimize = pallete.background2
+theme.bg_normal = pallete.bg_color
+theme.bg_focus = pallete.selected_bg_color
+theme.bg_urgent = pallete.error_bg_color
+theme.bg_minimize = pallete.tooltip_bg_color
 
-theme.accent = pallete.accent
+theme.accent = pallete.selected_bg_color
 
-theme.module_bg = pallete.background
-theme.module_bg_focused = pallete.background3
+theme.module_bg = pallete.button_bg_color
+theme.module_bg_focused = pallete.selected_bg_color
 
-theme.bg_systray = theme.module_bg
+theme.bg_systray = pallete.bg_color
+theme.systray_icon_spacing = dpi(4)
 
-theme.fg_normal = pallete.foreground
-theme.fg_focus = pallete.foreground
-theme.fg_urgent = pallete.black
-theme.fg_minimize = pallete.black
+theme.fg_normal = pallete.fg_color
+theme.fg_focus = pallete.selected_fg_color
+theme.fg_urgent = pallete.error_fg_color
+theme.fg_minimize = pallete.tooltip_fg_color
 
-theme.useless_gap = dpi(1)
+-- theme.useless_gap = dpi(4)
 theme.gap_single_client = true
 theme.border_width = dpi(2)
-theme.border_color_normal = pallete.black
-theme.border_color_active = pallete.border
-theme.border_color_marked = pallete.brightgreen
+theme.border_color_normal = pallete.wm_border_unfocused_color
+theme.border_color_active = pallete.wm_border_focused_color
+theme.border_color_marked = theme.accent
 
-theme.taglist_bg_empty = theme.module_bg
-theme.taglist_bg_occupied = theme.module_bg
-theme.taglist_bg_urgent = theme.module_bg
-theme.taglist_bg_focus = pallete.module_bg_focused
-theme.taglist_font = theme.icon_font .. " 11"
-theme.taglist_fg_focus = theme.accent
-theme.taglist_fg_occupied = pallete.foreground
-theme.taglist_fg_urgent = pallete.brightred
-theme.taglist_fg_empty = pallete.brightblack
-theme.taglist_shape = helper.rounded_rect(dpi(4))
+theme.taglist_bg_empty = pallete.button_bg_color
+theme.taglist_bg_occupied = pallete.button_bg_color
+theme.taglist_bg_urgent = pallete.button_bg_color
+theme.taglist_bg_focus = pallete.selected_bg_color
+theme.taglist_font = theme.font .. " " .. pallete.font_size
+theme.taglist_fg_focus = pallete.selected_fg_color
+theme.taglist_fg_occupied = pallete.osd_fg_color
+theme.taglist_fg_urgent = pallete.error_fg_color
+theme.taglist_fg_empty = pallete.button_fg_color
+-- theme.taglist_shape = function (cx, width, height)
+--     gears.shape.rounded_rect(cx, width, height, dpi(6))
+-- end
 
 theme.tasklist_bg_normal = theme.module_bg
 theme.tasklist_bg_focus = theme.accent
 theme.tasklist_bg_urgent = theme.module_bg_focused
-theme.tasklist_fg_urgent = pallete.brightred
+theme.tasklist_fg_urgent = pallete.error_fg_color
 
 theme.menu_font = theme.font_alt .. " 9"
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(100)
-theme.menu_border_color = pallete.brightblack
+theme.menu_border_color = pallete.wm_border_unfocused_color
 theme.menu_border_width = dpi(2)
-theme.menu_fg_focus = pallete.black
-theme.menu_bg_focus = theme.accent
-theme.menu_fg_normal = pallete.foreground
-theme.menu_bg_normal = pallete.background
+theme.menu_fg_focus = pallete.selected_fg_color
+theme.menu_bg_focus = pallete.selected_bg_color
+theme.menu_fg_normal = pallete.menubar_fg_color
+theme.menu_bg_normal = pallete.menubar_bg_color
 
 -- Variables set for theming notifications:
 -- notification_font
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
-theme.notification_bg = pallete.background2
-theme.notification_fg = pallete.foreground
+theme.notification_bg = pallete.tooltip_bg_color
+theme.notification_fg = pallete.tooltip_fg_color
 theme.notification_width = dpi(360)
 theme.notification_margin = dpi(120)
 theme.notification_border_width = dpi(2)
-theme.notification_border_color = pallete.border
-theme.notification_border_shape = helper.rounded_rect(dpi(12))
+theme.notification_border_color = pallete.wm_border_unfocused_color
+theme.notification_border_shape = function(cx, w, h)
+	gears.shape.rounded_rect(cx, w, h, dpi(12))
+end
 theme.notification_icon_size = dpi(100)
 
 -- Variables set for theming the menu:
@@ -131,7 +136,7 @@ theme.icon_theme = "Papirus-Dark"
 rnotification.connect_signal("request::rules", function()
 	rnotification.append_rule({
 		rule = { urgency = "critical" },
-		properties = { bg = pallete.red, fg = pallete.black },
+		properties = { bg = pallete.error_bg_color, fg = pallete.error_fg_color },
 	})
 end)
 

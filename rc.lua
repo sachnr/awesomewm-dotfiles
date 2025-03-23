@@ -3,7 +3,9 @@ local beautiful = require("beautiful")
 local theme = require("theme")
 
 pcall(require, "luarocks.loader")
+
 beautiful.init(theme)
+
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("keys")
@@ -13,11 +15,9 @@ require("autostart")
 require("wallpaper")
 
 -- vertical or horizontal
-require("bar").setup({
-	style = "horizontal",
-})
+require("bar.init").setup({})
 
-require("awful").screen.set_auto_dpi_enabled(true)
+require("awful").screen.set_auto_dpi_enabled(false)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)

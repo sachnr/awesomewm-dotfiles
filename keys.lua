@@ -2,7 +2,7 @@ local awful = require("awful.init")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local modkey = "Mod4"
-local terminal = "alacritty"
+local terminal = "ghostty"
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
@@ -13,6 +13,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+
+	awful.key({}, "Print", function()
+		awful.spawn.with_shell("scrot -s -e 'mv $f ~/Pictures/'")
+	end, { description = "Print Screen with scrot" }),
 
 	awful.key({ "Mod1" }, "space", function()
 		awful.spawn("rofi -show drun")
@@ -195,7 +199,9 @@ client.connect_signal("request::default_keybindings", function()
 		end, { description = "close", group = "client" }),
 
 		awful.key({ modkey }, "F2", function(c)
-			awful.spawn.easy_async_with_shell("i3lock-script")
+			awful.spawn.easy_async_with_shell(
+				'/usr/bin/i3lock -i ~/wallpapers/home/turbo.jpg -nfe --fill --force-clock --indicator --verif-text="" --wrong-text="" --noinput-text=""'
+			)
 		end, { description = "close", group = "client" }),
 
 		awful.key({ modkey }, "t", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),

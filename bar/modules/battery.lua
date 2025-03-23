@@ -16,7 +16,7 @@ M.icons = {
 }
 
 local function battery_update()
-	local icon
+	local icon = M.icons.full
 	if bat_now.perc <= 20 then
 		icon = M.icons.crit
 	elseif bat_now.perc <= 40 then
@@ -25,11 +25,11 @@ local function battery_update()
 		icon = M.icons.med
 	elseif bat_now.perc <= 80 then
 		icon = M.icons.high
-	elseif bat_now.perc == 100 then
+	elseif bat_now.perc <= 100 then
 		icon = M.icons.full
 	end
 
-	local color
+	local color = beautiful.fg_normal
 	if bat_now.status == "Charging" then
 		color = beautiful.bg_success
 	elseif bat_now.status == "Discharging" then

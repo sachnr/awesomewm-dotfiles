@@ -48,18 +48,18 @@ theme.border_color_normal = pallete.wm_border_unfocused_color
 theme.border_color_active = pallete.wm_border_focused_color
 theme.border_color_marked = theme.accent
 
-theme.taglist_bg_empty = pallete.button_bg_color
+theme.taglist_bg_empty = "#00000000"
 theme.taglist_bg_occupied = pallete.button_bg_color
-theme.taglist_bg_urgent = pallete.button_bg_color
+theme.taglist_bg_urgent = "#00000000"
 theme.taglist_bg_focus = pallete.selected_bg_color
 theme.taglist_font = theme.font .. " " .. pallete.font_size
 theme.taglist_fg_focus = pallete.selected_fg_color
 theme.taglist_fg_occupied = pallete.osd_fg_color
 theme.taglist_fg_urgent = pallete.error_fg_color
 theme.taglist_fg_empty = pallete.button_fg_color
--- theme.taglist_shape = function (cx, width, height)
---     gears.shape.rounded_rect(cx, width, height, dpi(6))
--- end
+theme.taglist_shape = function(cx, width, height)
+	gears.shape.rounded_rect(cx, width, height, dpi(6))
+end
 
 theme.tasklist_bg_normal = theme.module_bg
 theme.tasklist_bg_focus = theme.accent

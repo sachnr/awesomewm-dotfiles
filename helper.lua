@@ -55,18 +55,38 @@ M.hover_hand = function(widget)
 	end)
 end
 
-M.create_rounded_widget = function(widget, amount)
-	local container = wibox.container.background()
-	container.bg = beautiful.module_bg
-	container.shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, amount)
-	end
-	container.id = "container"
+M.padding_horizontal = function(dpi)
+	return wibox.widget({
+		forced_width = dpi,
+		widget = wibox.container.background,
+	})
+end
 
-	container.widget = widget
+M.create_rounded_widget = function(widget, amount)
+	local container = wibox.widget({
+		{
+			{
+				M.padding_horizontal(dpi(6)),
+				widget,
+				M.padding_horizontal(dpi(6)),
+				layout = wibox.layout.fixed.horizontal,
+			},
+			id = "container",
+			bg = beautiful.module_bg,
+			shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, amount)
+			end,
+			widget = wibox.container.background,
+		},
+		left = dpi(8),
+		right = dpi(8),
+		top = dpi(4),
+		bottom = dpi(4),
+		widget = wibox.container.margin,
+	})
 
 	-- lrtb
-	return wibox.container.margin(container, dpi(8), dpi(8), dpi(4), dpi(4))
+	return container
 end
 
 M.set_map = function(element, value)

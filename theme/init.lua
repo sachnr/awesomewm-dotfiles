@@ -21,7 +21,9 @@ theme.icon_font = "Symbols Nerd Font Mono"
 
 theme.bg_normal = pallete.bg_color
 theme.bg_focus = pallete.selected_bg_color
+theme.bg_warning = pallete.warning_bg_color
 theme.bg_urgent = pallete.error_bg_color
+theme.bg_success = pallete.success_bg_color
 theme.bg_minimize = pallete.tooltip_bg_color
 
 theme.accent = pallete.selected_bg_color
@@ -34,7 +36,9 @@ theme.systray_icon_spacing = dpi(4)
 
 theme.fg_normal = pallete.fg_color
 theme.fg_focus = pallete.selected_fg_color
+theme.fg_warning = pallete.warning_fg_color
 theme.fg_urgent = pallete.error_fg_color
+theme.fg_success = pallete.success_fg_color
 theme.fg_minimize = pallete.tooltip_fg_color
 
 -- theme.useless_gap = dpi(4)

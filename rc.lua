@@ -6,6 +6,19 @@ pcall(require, "luarocks.loader")
 
 beautiful.init(theme)
 
+local hostname
+local f = io.open("/proc/sys/kernel/hostname", "r")
+if f then
+	hostname = f:read("*l")
+	f:close()
+end
+
+if hostname == "thinkpad" then
+	_G.laptop = true
+else
+	_G.laptop = false
+end
+
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 require("keys")

@@ -3,6 +3,7 @@ local beautiful = require("beautiful")
 local systray = require("bar.modules.systray")
 local dpi = beautiful.xresources.apply_dpi
 local awful = require("awful")
+local naughty = require("naughty")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 ---@diagnostic disable-next-line: undefined-global
@@ -23,8 +24,14 @@ bar.setup = function(args)
 	local time = require("bar.modules.time")
 	local volume = require("bar.modules.volume")
 	local mpd_text = require("bar.modules.mpd")
+	local brightness = require("bar.modules.brightness")
+	local battery = require("bar.modules.battery")
 
 	require("bar.modules.lain_mpd")()
+	require("bar.modules.lain_battery")({
+		battery = "BAT0",
+		notify = true,
+	})
 
 	---@diagnostic disable-next-line: undefined-global
 	awful.screen.connect_for_each_screen(function(s)
@@ -46,6 +53,8 @@ bar.setup = function(args)
 					layout = wibox.layout.flex.horizontal,
 				},
 				{ -- Right widgets
+					(_G.laptop and battery.setup({}) or nil),
+					(_G.laptop and brightness.setup({}) or nil),
 					volume.setup(),
 					time.setup(),
 					systray.setup(),

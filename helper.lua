@@ -100,4 +100,21 @@ M.newtimer = function(name, timeout, fun, nostart, stoppable)
 	return stoppable and helpers.timer_table[key]
 end
 
+M.first_line = function(path)
+	local file, first = io.open(path, "rb"), nil
+	if file then
+		first = file:read("*l")
+		file:close()
+	end
+	return first
+end
+
+M.line_callback = function(cmd, callback)
+	return awful.spawn.with_line_callback(cmd, {
+		stdout = function(line)
+			callback(line)
+		end,
+	})
+end
+
 return M

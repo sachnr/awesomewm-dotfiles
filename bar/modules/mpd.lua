@@ -52,6 +52,12 @@ M.setup = function()
 		if button == 3 then
 			awful.spawn("ghostty -e ncmpcpp")
 		end
+		if button == 4 then
+			awful.spawn("mpc volume +5")
+		end
+		if button == 5 then
+			awful.spawn("mpc volume -5")
+		end
 	end)
 
 	return M.widget
